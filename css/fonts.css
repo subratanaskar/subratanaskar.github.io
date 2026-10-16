@@ -1,0 +1,57 @@
+/*
+  Brand fonts
+  -----------
+  Headings: PP Editorial New   (Pangram Pangram)
+  Body:     Saans Trial        (Displaay)
+
+  These are licensed fonts, so their files are not bundled here.
+  Drop your .woff2 files into assets/fonts/ with the exact names below and
+  the site switches to them automatically. Until then it falls back to
+  Instrument Serif / Inter (loaded from Google Fonts in index.html).
+*/
+
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("../assets/fonts/PPEditorialNew-Regular.woff2") format("woff2"),
+       url("../assets/fonts/PPEditorialNew-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("../assets/fonts/PPEditorialNew-Italic.woff2") format("woff2"),
+       url("../assets/fonts/PPEditorialNew-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/SaansTrial-Light.woff2") format("woff2"),
+       url("../assets/fonts/SaansTrial-Light.otf") format("opentype");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/SaansTrial-Regular.woff2") format("woff2"),
+       url("../assets/fonts/SaansTrial-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/SaansTrial-Medium.woff2") format("woff2"),
+       url("../assets/fonts/SaansTrial-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/SaansTrial-Bold.woff2") format("woff2"),
+       url("../assets/fonts/SaansTrial-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-display: swap;
+}
