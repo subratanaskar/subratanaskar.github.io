@@ -1,0 +1,47 @@
+/*
+  Brand fonts (files live in assets/fonts/)
+  Headings: PP Editorial New
+  Body:     Saans Trial
+*/
+
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("../assets/fonts/PPEditorialNew-Regular.woff2") format("woff2"),
+       url("../assets/fonts/PPEditorialNew-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "PP Editorial New";
+  src: url("../assets/fonts/PPEditorialNew-Italic.woff2") format("woff2"),
+       url("../assets/fonts/PPEditorialNew-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/Saans-TRIAL-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/Saans-TRIAL-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/Saans-TRIAL-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Saans Trial";
+  src: url("../assets/fonts/Saans-TRIAL-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
