@@ -42,9 +42,13 @@ TEMPLATE = r"""<!doctype html>
 <title>Subrata Naskar — Portfolio</title>
 <meta name="theme-color" content="#0f2457" />
 <link rel="icon" type="image/png" href="assets/img/favicon.png" />
-<link rel="stylesheet" href="css/fonts.css" />
 <style>
-  :root { --navy:#0f2457; --yellow:#e4d76c; --cream:#fdfadc; --pink:#e2366c; --sky:#3cc4ef; }
+  @font-face { font-family: "Season Sans"; src: url("assets/fonts/SeasonSans-TRIAL-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
+  @font-face { font-family: "Season Sans"; src: url("assets/fonts/SeasonSans-TRIAL-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+  @font-face { font-family: "Season Sans"; src: url("assets/fonts/SeasonSans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+</style>
+<style>
+  :root { --navy:#0f2457; --yellow:#cbd08a; --cream:#fdfadc; --pink:#e2366c; --sky:#3cc4ef; }
   * { box-sizing: border-box; }
   html, body { height: 100%; margin: 0; }
   body {
@@ -53,14 +57,14 @@ TEMPLATE = r"""<!doctype html>
                       linear-gradient(to bottom, rgba(253,250,220,.07) 1px, transparent 1px);
     background-size: 120px 120px; background-position: calc(50% - 60px) 0;
     color: var(--cream);
-    font-family: "Saans Trial", system-ui, -apple-system, sans-serif;
+    font-family: "Season Sans", system-ui, -apple-system, sans-serif;
     display: grid; place-items: center; padding: 24px 16px;
     -webkit-font-smoothing: antialiased;
   }
   .gate { width: min(100%, 460px); text-align: center; }
   .dog { width: 132px; height: 132px; margin: 0 auto 8px; display: block; }
   h1 {
-    font-family: "PP Editorial New", Georgia, serif; font-weight: 400;
+    font-family: "Season Sans", system-ui, sans-serif; font-weight: 500;
     font-size: clamp(56px, 14vw, 96px); line-height: .9; letter-spacing: -0.04em;
     color: var(--yellow); margin: 0 0 18px;
   }
@@ -93,7 +97,7 @@ TEMPLATE = r"""<!doctype html>
 </head>
 <body>
 <main class="gate" id="gate">
-  <img class="dog" src="assets/img/subro-dog.gif" alt="Subro, a line-drawn dog" width="132" height="132" />
+  <img class="dog" src="assets/img/portrait-grid.png" alt="Pixel portrait of Subrata" width="132" height="124" style="image-rendering:pixelated;height:auto" />
   <h1>Subrata<br/>Naskar</h1>
   <p>Namaskar! This portfolio is private.<br/>Enter the password to come in.</p>
   <form id="f" autocomplete="off">
