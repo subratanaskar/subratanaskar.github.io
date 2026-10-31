@@ -283,7 +283,11 @@
       const sw = sp.width * cell, sh = sp.height * cell;
       const roofY = ty + 9 * k - bob;
       const sx = Math.round(tx + 128 * k - 14 * cell), sy = Math.round(roofY - SEAT * cell);
-      if (taxiImg.complete && taxiImg.naturalWidth) ctx.drawImage(taxiImg, tx, ty - bob, taxiW, taxiH);
+      if (taxiImg.complete && taxiImg.naturalWidth) {
+        // the SVG is drawn facing left, so mirror it: bonnet leads, boot trails
+        ctx.save(); ctx.translate(tx + taxiW, ty - bob); ctx.scale(-1, 1);
+        ctx.drawImage(taxiImg, 0, 0, taxiW, taxiH); ctx.restore();
+      }
       ctx.drawImage(sp, sx, sy, sw, sh);
       // toss interests out of his raised hand
       throwT += dt; armT -= dt;
@@ -496,7 +500,7 @@
       while (alive) {
         for (let i = 0; i < steps.length && alive; i++) {
           steps.forEach((s, k) => s.classList.toggle("on", k === i));
-          count.textContent = `0${i + 1} / 0${steps.length}`;
+          if (count) count.textContent = `0${i + 1} / 0${steps.length}`;
           if (i === 4 && !spinning) { spinning = true; spin(); }
           await sleep(DUR[i]);
         }

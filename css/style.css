@@ -306,7 +306,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 @keyframes browUp { 0%, 57%, 81%, 100% { translate: 0 0; } 62%, 76% { translate: 0 -7px; } }
 @keyframes browDown { 0%, 57%, 81%, 100% { translate: 0 0; rotate: 0deg; } 62%, 76% { translate: 0 5px; rotate: 8deg; } }
 .talk__title { font-weight: 500; font-size: clamp(48px, 5.6vw, 80px); line-height: 1.1; letter-spacing: -.02em; color: var(--olive); }
-.talk__p { margin-top: 16px; font-weight: 300; font-size: 24px; line-height: 1.4; max-width: 640px; color: #fff; }
+.talk__p { margin-top: 16px; font-weight: 300; font-size: 20px; line-height: 1.45; max-width: 540px; color: #fff; }
 .contact { position: relative; height: 440px; background: var(--olive); border: 1px solid #e5e5e5; display: grid; place-items: center; }
 .contact.reveal { overflow: visible; }
 .contact__stripes { position: absolute; inset: 0; overflow: hidden; }
