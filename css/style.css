@@ -46,10 +46,12 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 ::selection { background: var(--olive); color: var(--navy); }
 :focus-visible { outline: 2px solid var(--olive); outline-offset: 3px; }
 
-/* 120px design grid behind everything (from the Figma frames) */
-main, .footer, .grid-bg {
+/* 120px design grid behind everything (from the Figma frames).
+   One grid, anchored to the top-left of the window and fixed, so the nav,
+   every section and the My Story panel all share exactly the same lines. */
+main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
   background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: 120px 120px; background-position: calc(50% - 60px) 0;
+  background-size: 120px 120px; background-position: 0 0; background-attachment: fixed;
 }
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 
@@ -123,9 +125,6 @@ main, .footer, .grid-bg {
   position: sticky; top: 0; z-index: 60; height: 72px; width: 100%;
   padding: 0 max(var(--gutter), calc((100% - var(--max)) / 2 + 80px)); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px;
   background-color: var(--navy);
-  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px);
-  background-size: 120px 100%; background-position: calc(50% - 60px) 0;
-  border-bottom: 1px solid var(--grid);
 }
 .nav__logo { display: grid; place-items: center; width: 48px; height: 48px; }
 .face-logo { display: block; height: 48px; width: auto; transition: transform .3s var(--ease); }
@@ -187,7 +186,7 @@ main, .footer, .grid-bg {
 /* ---------- 4. taxi strip ---------- */
 .taxi { position: relative; height: clamp(300px, 31vw, 440px); overflow: hidden; border-block: 1px solid rgba(253,250,220,.08); background: var(--navy); }
 .taxi canvas { width: 100%; height: 100%; image-rendering: pixelated; }
-.taxi__caption { position: absolute; left: 0; right: 0; bottom: 10px; text-align: center; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(253,250,220,.35); pointer-events: none; }
+.taxi__caption { position: absolute; left: 0; right: 0; bottom: 12px; padding-inline: 16px; text-align: center; font-family: inherit; font-size: 14px; letter-spacing: 0; text-transform: none; color: rgba(253,250,220,.5); pointer-events: none; }
 
 /* ---------- 6. worked with ---------- */
 .worked { padding-top: 140px; padding-bottom: 160px; text-align: center; }
@@ -199,7 +198,7 @@ main, .footer, .grid-bg {
 /* ---------- 7. selected works: side scroll ---------- */
 .sw { position: relative; background: var(--navy); }
 .sw__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
-.sw__sky { position: absolute; inset: 0; background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px); background-size: 120px 120px; }
+.sw__sky { position: absolute; inset: 0; }
 .sw__city { position: absolute; left: 0; bottom: 96px; height: 220px; width: 400%; background-repeat: repeat-x; background-position: 0 100%; image-rendering: pixelated; opacity: .9; will-change: transform; }
 .sw__head { position: relative; z-index: 3; padding-top: 104px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .sw__lede { max-width: 440px; margin-top: 12px; font-size: 16px; line-height: 1.4; opacity: .9; }
@@ -242,21 +241,21 @@ main, .footer, .grid-bg {
 /* ---------- 10. play ---------- */
 .play { position: relative; padding-bottom: 140px; }
 .play__stage { position: relative; height: 100vh; min-height: 560px; background: transparent; overflow: hidden; display: grid; place-items: center; }
-.play__eyebrow, .play__count { position: absolute; top: 28px; font-size: 10px; letter-spacing: .2em; color: rgba(255,255,255,.4); }
+.play__eyebrow, .play__count { position: absolute; top: 28px; font-size: 10px; letter-spacing: .2em; color: rgba(253,250,220,.45); }
 .play__eyebrow { left: var(--gutter); } .play__count { right: var(--gutter); }
 .play__s { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; opacity: 0; transform: scale(.96); transition: opacity .5s var(--ease), transform .6s var(--ease); pointer-events: none; }
 .play__s.on { opacity: 1; transform: none; }
-.play__big { font-weight: 400; font-size: clamp(40px, 5.2vw, 76px); line-height: 1.12; letter-spacing: -.02em; color: #fff; }
+.play__big { font-weight: 400; font-size: clamp(40px, 5.2vw, 76px); line-height: 1.12; letter-spacing: -.02em; color: #FDFADC; }
 .play__big strong { font-weight: 700; }
 .play__big em { font-style: normal; color: var(--olive); }
-.game { position: relative; display: inline-block; color: var(--olive); padding: 0 .1em; border: 1px solid rgba(255,255,255,.5); }
-.game .h { width: 8px; height: 8px; background: var(--navy); border-color: rgba(255,255,255,.8); }
+.game { position: relative; display: inline-block; color: var(--olive); line-height: .9; padding: .06em .12em .16em; margin-left: .06em; vertical-align: -.14em; border: 1px solid rgba(253,250,220,.6); }
+.game .h { width: 9px; height: 9px; background: var(--navy); border-color: rgba(253,250,220,.85); }
 .game .h1, .game .h3 { left: -5px; } .game .h2, .game .h4 { right: -5px; } .game .h1, .game .h2 { top: -5px; } .game .h3, .game .h4 { bottom: -5px; }
 .tools { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
 .tools b { position: absolute; width: 40px; height: 40px; margin: -20px; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; transform: translate(0, 0) scale(0); transition: transform .5s var(--ease); }
 .play__s3.on .tools b { transform: translate(var(--tx), var(--ty)) scale(1); }
 .play__s5 { grid-template-columns: 1fr 1fr; text-align: left; }
-.play__toplay { justify-self: end; margin-right: 48px; font-size: clamp(28px, 3vw, 44px); font-weight: 500; color: #fff; }
+.play__toplay { justify-self: end; margin-right: 48px; font-size: clamp(28px, 3vw, 44px); font-weight: 500; color: #FDFADC; }
 .play__toplay em { font-style: normal; color: var(--olive); font-size: .5em; vertical-align: .3em; }
 .wheel { position: relative; height: 420px; width: 100%; perspective: 900px; }
 .wheel__in { position: absolute; left: 0; top: 50%; transform-style: preserve-3d; }
@@ -273,12 +272,15 @@ main, .footer, .grid-bg {
 .tool__logo { width: 82px; height: 76px; border-radius: 0; display: grid; place-items: center; font-weight: 700; font-size: 28px; letter-spacing: -.02em; }
 .tool__logo svg { height: 38px; width: auto; }
 .tool__logo svg.big { height: 50px; }
+.tool__img { width: 54px; height: 54px; object-fit: contain; pointer-events: none; }
+.tool__img--full { width: 100%; height: 100%; object-fit: cover; }
+.tool__logo { overflow: hidden; }
 .tool__name { font-size: 11px; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .tool.grab { box-shadow: 0 24px 50px rgba(0,0,0,.45); z-index: 5; }
 
 /* ---------- 12. let's talk ---------- */
 .talk { padding-top: 160px; padding-bottom: 140px; }
-.talk__row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 120px; }
+.talk__row { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 64px; align-items: center; margin-bottom: 120px; }
 .talk__star { display: grid; place-items: center; }
 .star { width: min(100%, 460px); height: auto; overflow: visible; animation: starFloat 2.4s cubic-bezier(.45, 0, .55, 1) infinite; transform-origin: 50% 70%; }
 @keyframes starFloat {
@@ -304,7 +306,7 @@ main, .footer, .grid-bg {
 @keyframes browUp { 0%, 57%, 81%, 100% { translate: 0 0; } 62%, 76% { translate: 0 -7px; } }
 @keyframes browDown { 0%, 57%, 81%, 100% { translate: 0 0; rotate: 0deg; } 62%, 76% { translate: 0 5px; rotate: 8deg; } }
 .talk__title { font-weight: 500; font-size: clamp(48px, 5.6vw, 80px); line-height: 1.1; letter-spacing: -.02em; color: var(--olive); }
-.talk__p { margin-top: 16px; font-weight: 300; font-size: 24px; line-height: 1.4; max-width: 537px; color: #fff; }
+.talk__p { margin-top: 16px; font-weight: 300; font-size: 24px; line-height: 1.4; max-width: 640px; color: #fff; }
 .contact { position: relative; height: 440px; background: var(--olive); border: 1px solid #e5e5e5; display: grid; place-items: center; }
 .contact.reveal { overflow: visible; }
 .contact__stripes { position: absolute; inset: 0; overflow: hidden; }
@@ -319,7 +321,6 @@ main, .footer, .grid-bg {
 .comment__row b { font-weight: 500; font-size: 14px; }
 .contact__btn { position: relative; z-index: 2; display: inline-flex; padding: 4px; background: var(--pink); box-shadow: 8px 8px 0 #000; transform: rotate(-5deg) translateY(15px); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
 .contact__btn:hover { transform: rotate(-2deg) translateY(10px) scale(1.04); box-shadow: 12px 12px 0 #000; }
-.contact__btn:hover .contact__inner { background: var(--olive); }
 .contact__inner { transition: background .35s var(--ease); }
 .contact__inner { display: inline-flex; align-items: center; gap: 22px; padding: 16px 28px; background: var(--sky); border: 4px solid var(--navy); font-weight: 500; font-size: clamp(44px, 5.6vw, 80px); line-height: 1; letter-spacing: -.03em; color: var(--navy); }
 .contact__inner i { font-style: normal; width: 64px; display: grid; place-items: center; padding: 2px 12px 8px; background: var(--pink); color: var(--cream); font-weight: 700; font-size: .68em; }
@@ -343,8 +344,6 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 .story__close { position: absolute; right: max(24px, calc((100% - var(--max)) / 2 + 80px)); top: 24px; z-index: 3; font-size: 14px; font-weight: 600; padding: 10px 14px; background: var(--olive); color: var(--ink-blue); border: 1.5px solid #fff; box-shadow: 3px 3px 0 var(--pink); }
 .story__scroll {
   height: 100%; overflow-y: auto; overscroll-behavior: contain;
-  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: 120px 120px; background-position: calc(50% - 60px) 0; background-attachment: local;
 }
 .st-hero { min-height: calc(92vh - 72px); display: grid; place-items: center; position: relative; overflow: hidden; }
 .st-hero__name { font-weight: 900; font-size: clamp(90px, 23vw, 360px); line-height: .8; letter-spacing: -.05em; color: var(--olive); }
