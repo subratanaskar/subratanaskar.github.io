@@ -116,11 +116,12 @@
     hello.classList.add("show");
     await sleep(1050);                                   // "Helloo" rises (like the reference)
     hello.classList.add("eyes");                         // two eyes look around for ~1s
-    const pupils = $$(".pupil", hello);
-    const look = [["0em", "0em"], ["-.06em", "0em"], ["-.05em", "-.07em"], [".06em", "-.05em"], [".06em", ".06em"], ["0em", "0em"]];
+    const pupils = $$(".hello__oo .pupil", hello);
+    // pupils start where the Figma puts them (looking right), then look around for ~1s
+    const look = [[-58, 0], [-48, -16], [6, -18], [22, 16], [-26, 14], [0, 0]];
     for (const [px, py] of look) {
-      pupils.forEach((p) => { p.style.setProperty("--px", px); p.style.setProperty("--py", py); });
-      await sleep(190);
+      pupils.forEach((p) => { p.style.transform = `translate(${px}px, ${py}px)`; });
+      await sleep(175);
     }
     hello.classList.add("leave");
     document.body.classList.remove("is-loading");
@@ -146,11 +147,11 @@
     video.addEventListener("timeupdate", () => { if (video.duration) bar.style.width = (video.currentTime / video.duration) * 100 + "%"; });
     video.addEventListener("ended", finishLoader);
     video.addEventListener("error", finishLoader);
-    $("#loaderSkip").addEventListener("click", finishLoader);
+    loader.addEventListener("click", finishLoader);
     addEventListener("keydown", (e) => { if (e.key === "Escape" && !started) finishLoader(); });
     const pr = video.play();
-    if (pr && pr.catch) pr.catch(finishLoader);
-    setTimeout(finishLoader, 15000);
+    if (pr && pr.catch) pr.catch(() => setTimeout(finishLoader, 600));
+    setTimeout(finishLoader, 4000);                      // the face clip is 1s; never hang on a slow network
   }
 
   /* =========================================================
@@ -435,9 +436,10 @@
   (function roles() {
     const list = $("#rolesList");
     if (!list) return;
-    const items = $$("li", list), H = 42;
+    const items = $$("li", list), H = 52;
     let alive = false, running = false;
     const go = (i) => { list.style.transform = `translateY(${-(i * H + H / 2)}px)`; items.forEach((li, k) => li.classList.toggle("on", k === i)); };
+    // H must match .roles__list li height in CSS
     go(3);
     async function loop() {
       if (running) return; running = true;
@@ -616,24 +618,39 @@
     }
     function init() {
       size();
-      bodies = els.map((el, i) => ({ el, x: 120 + ((i * 197) % Math.max(200, W - 240)), y: -200 - i * 140, vx: (Math.random() - 0.5) * 120, vy: 0, a: (Math.random() - 0.5) * 0.6, va: (Math.random() - 0.5) * 1.5 }));
+      const rows = W < 760 ? 2 : 1, n = Math.ceil(els.length / rows), span = Math.max(200, W - 2 * HW - 40);
+      bodies = els.map((el, i) => ({ el, row: i % rows, x: HW + 20 + ((Math.floor(i / rows) + 0.5) / n) * span, y: -120 - i * 70, vx: (Math.random() - 0.5) * 40, vy: 0, a: (Math.random() - 0.5) * 0.5, va: (Math.random() - 0.5) * 0.6, ph: i * 1.7 }));
     }
+    let clock = 0;
     function stepPhys(dt) {
-      const g = 1800;
+      // slow, floaty fall; cards hover above the floor and bob gently instead of landing
+      const g = 520, lift = Math.max(70, H * 0.14);
+      clock += dt;
       for (const b of bodies) {
         if (b === grab) continue;
-        b.vy += g * dt; b.x += b.vx * dt; b.y += b.vy * dt; b.a += b.va * dt;
-        if (b.y > H - HH) { b.y = H - HH; b.vy *= -0.32; b.vx *= 0.86; b.va = b.va * 0.6 + (-b.a * 0.8) * dt * 10; if (Math.abs(b.vy) < 40) b.vy = 0; }
+        b.vy += g * dt;
+        b.vx *= 1 - 1.2 * dt; b.vy *= 1 - 0.6 * dt;               // air drag
+        const fl = H - HH - lift - b.row * (HH * 2 + 18) + Math.sin(clock * 1.3 + b.ph) * 9;  // float line (2 rows on phones)
+        if (b.y > fl) {
+          b.vy -= (b.y - fl) * 38 * dt;                           // soft spring pushes it back up
+          b.vy *= 1 - 3.5 * dt;
+          b.va += (-b.a * 2.2 + Math.sin(clock * 0.9 + b.ph) * 0.15) * dt;
+          b.va *= 1 - 2.5 * dt;
+        }
+        b.x += b.vx * dt; b.y += b.vy * dt; b.a += b.va * dt;
+        if (b.y > H - HH) { b.y = H - HH; b.vy = Math.min(0, b.vy); }
+        if (b.y < HH && b.vy < 0) { b.vy *= -0.4; }
         if (b.x < HW) { b.x = HW; b.vx *= -0.5; } if (b.x > W - HW) { b.x = W - HW; b.vx *= -0.5; }
-        b.va *= 0.995;
+        b.va *= 1 - 0.4 * dt;
       }
       for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) {
         const A = bodies[i], B = bodies[j], dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy) || 1;
-        if (d < R * 1.7) {
-          const o = (R * 1.7 - d) / 2, nx = dx / d, ny = dy / d;
+        const md = R * 1.55;
+        if (d < md) {
+          const o = (md - d) / 2 * 0.5, nx = dx / d, ny = dy / d;     // soft separation (no jitter)
           if (A !== grab) { A.x -= nx * o; A.y -= ny * o; } if (B !== grab) { B.x += nx * o; B.y += ny * o; }
           const rv = (B.vx - A.vx) * nx + (B.vy - A.vy) * ny;
-          if (rv < 0) { const imp = -rv * 0.6; if (A !== grab) { A.vx -= nx * imp; A.vy -= ny * imp; A.va -= 0.3; } if (B !== grab) { B.vx += nx * imp; B.vy += ny * imp; B.va += 0.3; } }
+          if (rv < 0) { const imp = -rv * 0.4; if (A !== grab) { A.vx -= nx * imp; A.vy -= ny * imp; A.va -= 0.08; } if (B !== grab) { B.vx += nx * imp; B.vy += ny * imp; B.va += 0.08; } }
         }
       }
     }
@@ -658,7 +675,7 @@
       grab.vx = (nx - grab.x) / dt; grab.vy = (ny - grab.y) / dt; grab.x = nx; grab.y = ny; grab.lt = now;
       grab.a += (grab.vx / 6000);
     });
-    const release = () => { if (!grab) return; grab.el.classList.remove("grab"); grab.vx = clamp(grab.vx, -1800, 1800); grab.vy = clamp(grab.vy, -1800, 1800); grab.va = grab.vx / 600; grab = null; };
+    const release = () => { if (!grab) return; grab.el.classList.remove("grab"); grab.vx = clamp(grab.vx, -1100, 1100); grab.vy = clamp(grab.vy, -1100, 1100); grab.va = grab.vx / 900; grab = null; };
     box.addEventListener("pointerup", release); box.addEventListener("pointercancel", release);
     addEventListener("resize", size);
     init(); render();
@@ -684,10 +701,24 @@
       setTimeout(() => { el.hidden = true; }, 800);
       if (lastFocus) lastFocus.focus();
     }
-    $$("[data-open-story]").forEach((b) => b.addEventListener("click", open));
+    $$("[data-open-story]").forEach((b) => b.addEventListener("click", () => (el.classList.contains("open") ? close() : open())));
     $$("[data-close-story]").forEach((b) => b.addEventListener("click", close));
+    // nav links (Projects, Experiments, logo) close the story and go to the section
+    $$(".nav a[href^='#']").forEach((a) => a.addEventListener("click", () => { if (el.classList.contains("open")) close(); }));
     addEventListener("keydown", (e) => { if (e.key === "Escape" && el.classList.contains("open")) close(); });
     if (location.hash === "#story") open();
+  })();
+
+  /* star: eyes follow the pointer a little */
+  (function starEyes() {
+    const eyes = $("#starEyes"), star = $(".star");
+    if (!eyes || reduce) return;
+    addEventListener("pointermove", (e) => {
+      const r = star.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > innerHeight) return;
+      const dx = clamp((e.clientX - (r.left + r.width / 2)) / r.width, -1, 1), dy = clamp((e.clientY - (r.top + r.height / 2)) / r.height, -1, 1);
+      eyes.style.transform = `translate(${dx * 16}px, ${dy * 12}px)`;
+    }, { passive: true });
   })();
 
   const y = $("#year"); if (y) y.textContent = new Date().getFullYear();
