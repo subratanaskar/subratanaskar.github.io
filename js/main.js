@@ -230,23 +230,95 @@
     function makeCity() {
       const c = document.createElement("canvas");
       c.width = Math.ceil(W / S) + 2; c.height = Math.ceil(road / S);
-      const x = c.getContext("2d");
-      let px = 0, seed = 7;
+      const x = c.getContext("2d"), G = c.height, CW = c.width;
+      let seed = 7;
       const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-      while (px < c.width) {
-        const bw = 6 + Math.floor(rnd() * 12), bh = 10 + Math.floor(rnd() * (c.height * 0.55));
-        x.fillStyle = rnd() > 0.5 ? "#132b63" : "#11275a";
-        x.fillRect(px, c.height - bh, bw, bh);
-        x.fillStyle = "rgba(203,208,138,.35)";
-        for (let wy = c.height - bh + 3; wy < c.height - 2; wy += 4)
-          for (let wx = px + 2; wx < px + bw - 2; wx += 3) if (rnd() > 0.55) x.fillRect(wx, wy, 1, 1);
-        px += bw + 1 + Math.floor(rnd() * 3);
+      const R = (col, rx, ry, rw, rh) => { x.fillStyle = col; x.fillRect(Math.round(rx), Math.round(ry), Math.max(1, Math.round(rw)), Math.max(1, Math.round(rh))); };
+      const dome = (col, cx, by, r) => { for (let dy = 0; dy <= r; dy++) { const hw = Math.round(Math.sqrt(r * r - dy * dy)); R(col, cx - hw, by - dy - 1, hw * 2 + 1, 1); } };
+      const BODY = "#1d3b7d", LITE = "#2a4d93", DARK = "#0c1d4a", BRIDGE = "#24468b", LIT = "rgba(203,208,138,.38)", TREE = "#16336d", TREE2 = "#1b3a77";
+
+      // where the two landmarks sit
+      const u = Math.min(1, (G * 0.8) / 42, (CW * 0.32) / 76);           // Victoria Memorial scale
+      const vmX = Math.round(CW * 0.2), vmHalf = Math.round(40 * u);
+      const bw = Math.round(Math.min(130, CW * 0.4)), bx = Math.round(CW * 0.56), bh = Math.round(Math.min(32, bw * 0.26, G * 0.62));
+
+      // 1) ordinary buildings — none in front of the memorial, low ones behind the bridge
+      let px = 0;
+      while (px < CW) {
+        const bwid = 6 + Math.floor(rnd() * 12);
+        let bht = 10 + Math.floor(rnd() * (G * 0.5));
+        const mid = px + bwid / 2;
+        if (Math.abs(mid - vmX) < vmHalf + 10) { px += bwid + 1; continue; }
+        if (mid > bx && mid < bx + bw) bht = Math.min(bht, Math.round(bh * 0.55));
+        R(rnd() > 0.5 ? "#132b63" : "#11275a", px, G - bht, bwid, bht);
+        if (rnd() > 0.75) R("#132b63", px + 2, G - bht - 3, 2, 3);                    // water tank / antenna
+        x.fillStyle = LIT;
+        for (let wy = G - bht + 3; wy < G - 2; wy += 4) for (let wx = px + 2; wx < px + bwid - 2; wx += 3) if (rnd() > 0.55) x.fillRect(wx, wy, 1, 1);
+        px += bwid + 1 + Math.floor(rnd() * 3);
       }
-      // Howrah-bridge-ish truss in the middle distance
-      const bx = Math.floor(c.width * 0.62), bwid = Math.min(90, Math.floor(c.width * 0.3)), base = c.height - 6;
-      x.fillStyle = "#1c3a7a";
-      x.fillRect(bx, base - 26, 3, 26); x.fillRect(bx + bwid, base - 26, 3, 26); x.fillRect(bx - 10, base - 4, bwid + 24, 2);
-      for (let i = 0; i <= bwid; i += 2) { const yy = Math.round(base - 22 + Math.pow((i - bwid / 2) / (bwid / 2), 2) * 14); x.fillRect(bx + i, yy, 2, 1); if (i % 8 === 0) x.fillRect(bx + i, yy, 1, base - 4 - yy); }
+
+      // 2) Victoria Memorial
+      (function memorial() {
+        const r = (v) => Math.round(v * u), cx = vmX;
+        // trees either side
+        for (let i = 0; i < 6; i++) {
+          const tx = cx + (i < 3 ? -1 : 1) * (r(38) + 2 + (i % 3) * r(7)), tr = Math.max(2, r(4 + (i % 2)));
+          dome(i % 2 ? TREE2 : TREE, tx, G, tr + 1); R(TREE, tx - tr, G - tr, tr * 2 + 1, tr);
+        }
+        R(BODY, cx - r(37), G - r(3), r(74), r(3));                                    // plinth
+        R(LITE, cx - r(37), G - r(3), r(74), 1);
+        R(BODY, cx - r(30), G - r(15), r(60), r(13));                                  // long wings
+        R(LITE, cx - r(30), G - r(15), r(60), 1);
+        for (let wx = cx - r(28); wx < cx + r(28); wx += Math.max(2, r(4))) {
+          if (Math.abs(wx - cx) < r(13)) continue;
+          R(DARK, wx, G - r(11), 1, Math.max(1, r(3))); R(DARK, wx, G - r(6), 1, Math.max(1, r(2)));
+        }
+        [-1, 1].forEach((sd) => {                                                         // corner towers
+          const tx = cx + sd * r(32), tl = tx - r(4);
+          R(BODY, tl, G - r(29), r(9), r(26)); R(LITE, tl, G - r(29), r(9), 1); R(LITE, tl - 1, G - r(18), r(9) + 2, 1);
+          R(DARK, tx - 1, G - r(25), 2, 2); R(DARK, tx - 1, G - r(13), 1 + (u > .6 ? 1 : 0), r(4));
+          R(BODY, tx - r(3), G - r(31), r(7), r(2));
+          dome(LITE, tx, G - r(31), Math.max(2, r(3))); R(LITE, tx, G - r(31) - Math.max(2, r(3)) - r(3), 1, r(3));
+          dome(BODY, cx + sd * r(20), G - r(15), Math.max(1, r(3)));                   // small domes on the wings
+          R(LITE, cx + sd * r(20), G - r(15) - Math.max(1, r(3)) - 2, 1, 2);
+        });
+        R(BODY, cx - r(12), G - r(22), r(24), r(20));                                  // central block
+        R(LITE, cx - r(12), G - r(22), r(24), 1);
+        [-1, 1].forEach((sd) => { dome(LITE, cx + sd * r(11), G - r(22), Math.max(1, r(2))); });
+        R(DARK, cx - r(4), G - r(12), r(8), r(10)); dome(DARK, cx, G - r(12), r(4));     // arched entrance
+        R(LITE, cx - r(4), G - r(5), r(8), 1);
+        R(BODY, cx - r(8), G - r(26), r(16), r(4));                                    // drum
+        for (let i = -3; i <= 3; i += 2) R(DARK, cx + r(i * 2), G - r(25), 1, Math.max(1, r(2)));
+        const dr = r(9), db = G - r(26);
+        dome(BODY, cx, db, dr);                                                          // the big dome, ribbed
+        for (let dy = 1; dy < dr; dy += 2) { const hw = Math.round(Math.sqrt(dr * dr - dy * dy)); R(LITE, cx - hw, db - dy - 1, hw * 2 + 1, 1); }
+        R(BODY, cx - 1, db - dr - r(3), 3, r(3)); dome(LITE, cx, db - dr - r(3), 1);    // lantern
+        R(LITE, cx, db - dr - r(3) - 4, 1, 3); R(LITE, cx - 1, db - dr - r(3) - 4, 3, 1); // angel finial
+      })();
+
+      // 3) Howrah Bridge — cantilever truss
+      (function bridge() {
+        const deck = G - 4, tA = bx + Math.round(bw * 0.24), tB = bx + Math.round(bw * 0.76), mid = (tA + tB) / 2, lo = Math.round(bh * 0.28);
+        const top = (xx) => {
+          let h;
+          if (xx <= tA) h = lo * 0.7 + (bh - lo * 0.7) * Math.pow((xx - bx) / (tA - bx), 1.5);
+          else if (xx >= tB) h = lo * 0.7 + (bh - lo * 0.7) * Math.pow((bx + bw - xx) / (bx + bw - tB), 1.5);
+          else h = lo + (bh - lo) * Math.pow((xx - mid) / (tA - mid), 2);
+          return Math.round(deck - h);
+        };
+        x.fillStyle = BRIDGE;
+        const step = Math.max(5, Math.round(bw / 22));
+        for (let xx = bx; xx <= bx + bw; xx++) x.fillRect(xx, top(xx), 1, 1);                     // top chord
+        for (let xx = bx; xx <= bx + bw; xx += step) {
+          const y0 = top(xx); x.fillRect(xx, y0, 1, deck - y0);                                      // verticals
+          const nx = Math.min(bx + bw, xx + step), down = Math.floor((xx - bx) / step) % 2 === 0;   // diagonals
+          const ya = down ? top(xx) : deck, yb = down ? deck : top(nx);
+          for (let t = 0; t <= 1; t += 1 / (Math.abs(yb - ya) + step)) x.fillRect(Math.round(xx + (nx - xx) * t), Math.round(ya + (yb - ya) * t), 1, 1);
+        }
+        [tA, tB].forEach((tx) => { R(LITE, tx - 1, top(tx) - 1, 3, deck - top(tx) + 1); R(BODY, tx - 2, deck, 5, G - deck); });   // towers + piers
+        R(BRIDGE, bx - 3, deck, bw + 7, 2); R(LITE, bx - 3, deck, bw + 7, 1);                        // deck
+        R(BODY, bx - 5, deck + 1, 4, G - deck - 1); R(BODY, bx + bw + 2, deck + 1, 4, G - deck - 1); // abutments
+      })();
       return c;
     }
 
@@ -488,7 +560,7 @@
     let ang = 0, spinning = false, alive = false, running = false;
     function spin() {
       if (!spinning) return;
-      ang += 0.35;
+      ang += 0.5;
       spans.forEach((s, i) => {
         let rel = ((i * step - ang) % 360 + 540) % 360 - 180;
         s.style.transform = `rotateX(${-rel}deg)`;
@@ -497,7 +569,7 @@
       });
       requestAnimationFrame(spin);
     }
-    const DUR = [1300, 1700, 2300, 1900, 5200];
+    const DUR = [950, 1250, 1700, 1400, 3900];
     async function loop() {
       if (running) return; running = true;
       while (alive) {
