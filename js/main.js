@@ -407,11 +407,13 @@
       if (dir < 0) { mctx.translate(mascot.width, 0); mctx.scale(-1, 1); }
       mctx.drawImage(RUN[frameI % RUN.length], 0, 0, mascot.width, mascot.height);
     }
+    const swHead = $(".sw__head", sec);
     function layout() {
       sec.style.height = "auto";
       maxShift = Math.max(0, track.scrollWidth - innerWidth);
-      sec.style.height = innerHeight + maxShift + "px";
-      top = sec.getBoundingClientRect().top + scrollY;
+      const hh = swHead ? swHead.offsetHeight : 0;        // heading scrolls away before the stage pins
+      sec.style.height = hh + innerHeight + maxShift + "px";
+      top = sec.getBoundingClientRect().top + scrollY + hh;
       update();
     }
     function update() {
