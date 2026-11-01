@@ -658,7 +658,8 @@
     if (location.hash === "#story") open();
   })();
 
-  /* "game," frame: fit the box to the real letters (x-height to descender) with even padding */
+  /* "game" frame: a text box like the reference — ascender line to just under the
+     descender, with roomy, even side padding (proportions taken from the design) */
   (function fitGame() {
     const g = $(".game"), f = $(".game__frame");
     if (!g || !f) return;
@@ -668,17 +669,15 @@
     function fit() {
       const cs = getComputedStyle(g), fs = parseFloat(cs.fontSize);
       cx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
-      const m = cx.measureText("game,");
+      const m = cx.measureText("game");
       g.insertBefore(mark, g.firstChild);
-      const base = mark.offsetTop;                         // baseline, from the top of .game
+      const base = mark.offsetTop;
       mark.remove();
-      const pad = Math.round(fs * 0.14);
-      const top = base - m.actualBoundingBoxAscent - pad;
-      const h = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent + pad * 2;
-      const left = -m.actualBoundingBoxLeft - pad;
-      const w = m.actualBoundingBoxLeft + m.actualBoundingBoxRight + pad * 2;
-      g.style.setProperty("--ft", top + "px"); g.style.setProperty("--fh", h + "px");
-      g.style.setProperty("--fl", left + "px"); g.style.setProperty("--fw", w + "px");
+      const top = base - fs * 0.98, bottom = base + fs * 0.44;
+      const side = fs * 0.27;
+      const left = -m.actualBoundingBoxLeft - side, right = m.actualBoundingBoxRight + side;
+      g.style.setProperty("--ft", top + "px"); g.style.setProperty("--fh", (bottom - top) + "px");
+      g.style.setProperty("--fl", left + "px"); g.style.setProperty("--fw", (right - left) + "px");
     }
     fit();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);

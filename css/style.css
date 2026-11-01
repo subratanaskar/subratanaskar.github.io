@@ -189,7 +189,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .taxi__caption { position: absolute; left: 0; right: 0; bottom: 12px; padding-inline: 16px; text-align: center; font-family: inherit; font-size: 14px; letter-spacing: 0; text-transform: none; color: rgba(253,250,220,.5); pointer-events: none; }
 
 /* ---------- 6. worked with ---------- */
-.worked { padding-top: 140px; padding-bottom: 160px; text-align: center; }
+.worked { padding-top: 240px; padding-bottom: 160px; text-align: center; }
 .worked__title { font-weight: 500; font-size: 24px; color: var(--olive); margin-bottom: 80px; }
 .worked__logos { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 48px 64px; }
 .worked__logos img { height: 48px; width: auto; opacity: .85; transition: opacity .3s, transform .3s var(--ease); }
@@ -250,12 +250,13 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .play__big em { font-style: normal; color: var(--olive); }
 /* "game," gets the same text-box frame as "What's Up": even padding all round the letters.
    JS measures the real glyph box and sets --fl/--ft/--fw/--fh. */
-.game { position: relative; display: inline-block; color: var(--olive); margin-inline: .14em; }
+.game { position: relative; display: inline-block; color: var(--olive); margin-inline: .3em .28em; }
 .game__frame { position: absolute; left: var(--fl, -.16em); top: var(--ft, .1em); width: var(--fw, calc(100% + .32em)); height: var(--fh, .95em); border: 1px solid rgba(229,229,229,.6); pointer-events: none; }
-.game .h { width: 7px; height: 7px; background: var(--navy); border: 1px solid rgba(229,229,229,.6); }
-.game .h1, .game .h3 { left: -4px; } .game .h2, .game .h4 { right: -4px; } .game .h1, .game .h2 { top: -4px; } .game .h3, .game .h4 { bottom: -4px; }
+.game__frame { border-width: 1.5px; border-color: rgba(229,229,229,.6); }
+.game .h { width: .19em; height: .19em; min-width: 10px; min-height: 10px; background: #1a2b63; border: 1.5px solid rgba(229,229,229,.6); }
+.game .h1, .game .h3 { left: 0; translate: -50% 0; } .game .h2, .game .h4 { right: 0; translate: 50% 0; } .game .h1, .game .h2 { top: 0; margin-top: -.095em; } .game .h3, .game .h4 { bottom: 0; margin-bottom: -.095em; }
 .tools { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
-.tools b { position: absolute; width: 40px; height: 40px; margin: -20px; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; transform: translate(0, 0) scale(0); transition: transform .5s var(--ease); }
+.tools b { position: absolute; width: 40px; height: 40px; margin: -20px; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); border-radius: 0; transform: translate(0, 0) scale(0); transition: transform .5s var(--ease); }
 .play__s3.on .tools b { transform: translate(var(--tx), var(--ty)) scale(1); }
 .play__s5 { grid-template-columns: 1fr 1fr; text-align: left; }
 .play__toplay { justify-self: end; margin-right: 48px; font-size: clamp(28px, 3vw, 44px); font-weight: 500; color: #FDFADC; }
@@ -438,3 +439,4 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 /* the same Let's Talk + contact + footer, repeated at the end of My Story */
 .story__end { margin-top: 40px; }
 .story__end .talk { padding-top: 120px; }
+.play__s2 .play__big { line-height: 1.42; }
