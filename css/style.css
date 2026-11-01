@@ -130,9 +130,9 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .face-logo { display: block; height: 48px; width: auto; transition: transform .3s var(--ease); }
 .nav__logo:hover .face-logo { transform: rotate(-8deg) scale(1.08); }
 /* left-eye wink: closes for a beat every ~3.6s (twice in a row sometimes) */
-.face-logo__wink { opacity: 0; animation: wink 3.6s steps(1, end) infinite; }
-.nav__logo:hover .face-logo__wink { animation-duration: 1.2s; }
-@keyframes wink { 0%, 62% { opacity: 0; } 63%, 68% { opacity: 1; } 69%, 100% { opacity: 0; } }
+.face-logo__wink { opacity: 0; animation: wink 1.9s steps(1, end) infinite; }
+.nav__logo:hover .face-logo__wink { animation-duration: 1s; }
+@keyframes wink { 0%, 80% { opacity: 0; } 81%, 89% { opacity: 1; } 90%, 100% { opacity: 0; } }
 .nav__links { display: flex; gap: 40px; }
 .nav__link { display: inline-flex; align-items: center; gap: 4px; font-size: 14px; line-height: 20px; }
 .nav__link .dot { transition: transform .3s var(--ease), background .3s; }
@@ -200,7 +200,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .sw__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .sw__sky { position: absolute; inset: 0; }
 .sw__city { position: absolute; left: 0; bottom: 96px; height: 220px; width: 400%; background-repeat: repeat-x; background-position: 0 100%; image-rendering: pixelated; opacity: .9; will-change: transform; }
-.sw__head { position: relative; z-index: 3; padding-top: 104px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.sw__head { position: relative; z-index: 3; padding-top: 224px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .sw__lede { max-width: 440px; margin-top: 12px; font-size: 16px; line-height: 1.4; opacity: .9; }
 .sw__legend { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 .lg-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
@@ -248,9 +248,12 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .play__big { font-weight: 400; font-size: clamp(40px, 5.2vw, 76px); line-height: 1.12; letter-spacing: -.02em; color: #FDFADC; }
 .play__big strong { font-weight: 700; }
 .play__big em { font-style: normal; color: var(--olive); }
-.game { position: relative; display: inline-block; color: var(--olive); line-height: .9; padding: .06em .12em .16em; margin-left: .06em; vertical-align: -.14em; border: 1px solid rgba(253,250,220,.6); }
-.game .h { width: 9px; height: 9px; background: var(--navy); border-color: rgba(253,250,220,.85); }
-.game .h1, .game .h3 { left: -5px; } .game .h2, .game .h4 { right: -5px; } .game .h1, .game .h2 { top: -5px; } .game .h3, .game .h4 { bottom: -5px; }
+/* "game," gets the same text-box frame as "What's Up": even padding all round the letters.
+   JS measures the real glyph box and sets --fl/--ft/--fw/--fh. */
+.game { position: relative; display: inline-block; color: var(--olive); margin-inline: .14em; }
+.game__frame { position: absolute; left: var(--fl, -.16em); top: var(--ft, .1em); width: var(--fw, calc(100% + .32em)); height: var(--fh, .95em); border: 1px solid rgba(229,229,229,.6); pointer-events: none; }
+.game .h { width: 7px; height: 7px; background: var(--navy); border: 1px solid rgba(229,229,229,.6); }
+.game .h1, .game .h3 { left: -4px; } .game .h2, .game .h4 { right: -4px; } .game .h1, .game .h2 { top: -4px; } .game .h3, .game .h4 { bottom: -4px; }
 .tools { position: absolute; left: 50%; top: 50%; width: 0; height: 0; }
 .tools b { position: absolute; width: 40px; height: 40px; margin: -20px; display: grid; place-items: center; font-size: 22px; font-weight: 700; color: #fff; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25); border-radius: 8px; transform: translate(0, 0) scale(0); transition: transform .5s var(--ease); }
 .play__s3.on .tools b { transform: translate(var(--tx), var(--ty)) scale(1); }
@@ -429,3 +432,9 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
   .comment { left: 16px; top: 16px; }
   .contact__inner { gap: 12px; padding: 10px 16px; } .contact__inner i { width: 44px; }
 }
+
+/* Let's Talk: text block sits 120px further right on desktop */
+@media (min-width: 861px) { .talk .talk__text { position: relative; left: 120px; } }
+/* the same Let's Talk + contact + footer, repeated at the end of My Story */
+.story__end { margin-top: 40px; }
+.story__end .talk { padding-top: 120px; }

@@ -638,7 +638,51 @@
     // nav links (Projects, Experiments, logo) close the story and go to the section
     $$(".nav a[href^='#']").forEach((a) => a.addEventListener("click", () => { if (el.classList.contains("open")) close(); }));
     addEventListener("keydown", (e) => { if (e.key === "Escape" && el.classList.contains("open")) close(); });
+    // repeat Let's Talk + contact + footer at the end of My Story
+    const sc = $("#storyScroll");
+    if (sc && !$(".story__end", sc)) {
+      const end = document.createElement("div");
+      end.className = "story__end";
+      [$(".talk"), $(".footer")].forEach((n) => {
+        if (!n) return;
+        const c = n.cloneNode(true);
+        c.removeAttribute("id");
+        $$("[id]", c).forEach((e) => e.removeAttribute("id"));
+        $$(".reveal", c).forEach((e) => e.classList.add("in"));
+        end.appendChild(c);
+      });
+      sc.appendChild(end);
+      // in-page links inside the story close it and jump to the section
+      $$("a[href^='#']", end).forEach((a) => a.addEventListener("click", () => close()));
+    }
     if (location.hash === "#story") open();
+  })();
+
+  /* "game," frame: fit the box to the real letters (x-height to descender) with even padding */
+  (function fitGame() {
+    const g = $(".game"), f = $(".game__frame");
+    if (!g || !f) return;
+    const cx = document.createElement("canvas").getContext("2d");
+    const mark = document.createElement("i");
+    mark.style.cssText = "display:inline-block;width:0;height:0;vertical-align:baseline";
+    function fit() {
+      const cs = getComputedStyle(g), fs = parseFloat(cs.fontSize);
+      cx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+      const m = cx.measureText("game,");
+      g.insertBefore(mark, g.firstChild);
+      const base = mark.offsetTop;                         // baseline, from the top of .game
+      mark.remove();
+      const pad = Math.round(fs * 0.14);
+      const top = base - m.actualBoundingBoxAscent - pad;
+      const h = m.actualBoundingBoxAscent + m.actualBoundingBoxDescent + pad * 2;
+      const left = -m.actualBoundingBoxLeft - pad;
+      const w = m.actualBoundingBoxLeft + m.actualBoundingBoxRight + pad * 2;
+      g.style.setProperty("--ft", top + "px"); g.style.setProperty("--fh", h + "px");
+      g.style.setProperty("--fl", left + "px"); g.style.setProperty("--fw", w + "px");
+    }
+    fit();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    addEventListener("resize", fit);
   })();
 
   /* star: eyes follow the pointer a little */
