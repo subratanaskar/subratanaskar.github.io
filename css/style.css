@@ -317,8 +317,8 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .contact { position: relative; height: 440px; background: var(--olive); border: 1px solid #e5e5e5; display: grid; place-items: center; }
 .contact.reveal { overflow: visible; }
 .contact__stripes { position: absolute; inset: 0; overflow: hidden; }
-.contact__stripes::before { content: ""; position: absolute; inset: -60% -40%; background: repeating-linear-gradient(118deg, var(--navy) 0 70px, transparent 70px 155px); animation: drift 4.5s linear infinite; }
-@keyframes drift { to { transform: translateX(310px); } }
+.contact__stripes::before { content: ""; position: absolute; inset: -60% -40% -60% calc(-40% - 360px); background: repeating-linear-gradient(118deg, var(--navy) 0 70px, transparent 70px 155px); animation: drift 5s linear infinite; will-change: transform; }
+@keyframes drift { from { transform: translate3d(0,0,0); } to { transform: translate3d(351.1px,0,0); } }
 .ch { position: absolute; width: 24px; height: 24px; background: var(--navy); border: 1px solid #e5e5e5; z-index: 3; }
 .ch1 { left: -13px; top: -13px; } .ch2 { right: -13px; top: -13px; } .ch3 { left: -13px; bottom: -13px; } .ch4 { right: -13px; bottom: -13px; }
 .comment { position: absolute; left: 39px; top: 39px; z-index: 2; background: #fff; color: var(--ink); padding: 12px 14px 16px; box-shadow: 0 10px 30px rgba(0,0,0,.25); width: min(320px, calc(100% - 40px)); }
