@@ -411,7 +411,8 @@
     function layout() {
       sec.style.height = "auto";
       maxShift = Math.max(0, track.scrollWidth - innerWidth);
-      const hh = swHead ? swHead.offsetHeight : 0;        // heading scrolls away before the stage pins
+      const stk = $(".sw__sticky", sec);
+      const hh = stk ? stk.offsetTop : (swHead ? swHead.offsetHeight : 0);   // where the stage starts inside the section
       sec.style.height = hh + innerHeight + maxShift + "px";
       top = sec.getBoundingClientRect().top + scrollY + hh;
       update();

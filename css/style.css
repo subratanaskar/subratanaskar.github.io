@@ -201,7 +201,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .sw__sticky { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .sw__sky { position: absolute; inset: 0; }
 .sw__city { position: absolute; left: 0; bottom: 96px; height: 220px; width: 400%; background-repeat: repeat-x; background-position: 0 100%; image-rendering: pixelated; opacity: .9; will-change: transform; }
-.sw__head { position: relative; z-index: 3; padding-top: 224px; padding-bottom: 120px; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
+.sw__head { position: relative; z-index: 3; padding-top: 224px; padding-bottom: 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; }
 .sw__lede { max-width: 440px; margin-top: 12px; font-size: 16px; line-height: 1.4; opacity: .9; }
 .sw__legend { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 .lg-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
@@ -228,7 +228,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .card__media .h { background: var(--ink); border-width: 1.5px; }
 
 /* ---------- 8. roles ---------- */
-.roles { min-height: 100vh; display: flex; justify-content: center; align-items: center; gap: 48px; padding-block: 120px; }
+.roles { display: flex; justify-content: center; align-items: center; gap: 48px; padding: 148px 0 120px; }
 .roles__lead { font-size: 24px; line-height: 32px; white-space: nowrap; }
 /* only 3 words above and 3 below the frame, fading out to both ends */
 .roles__col { position: relative; height: 364px; width: 250px; overflow: hidden; -webkit-mask-image: linear-gradient(transparent, #000 42%, #000 58%, transparent); mask-image: linear-gradient(transparent, #000 42%, #000 58%, transparent); }
@@ -241,8 +241,8 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .roles__list li.gone { opacity: 0; transform: translateX(16px); }
 
 /* ---------- 10. play ---------- */
-.play { position: relative; padding-bottom: 140px; }
-.play__stage { position: relative; height: 100vh; min-height: 560px; background: transparent; overflow: hidden; display: grid; place-items: center; }
+.play { position: relative; padding-bottom: 112px; }
+.play__stage { position: relative; height: calc(100vh - 184px); min-height: 560px; background: transparent; overflow: hidden; display: grid; place-items: center; }
 .play__eyebrow, .play__count { position: absolute; top: 28px; font-size: 10px; letter-spacing: .2em; color: rgba(253,250,220,.45); }
 .play__eyebrow { left: var(--gutter); } .play__count { right: var(--gutter); }
 .play__s { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; opacity: 0; transform: scale(.96); transition: opacity .5s var(--ease), transform .6s var(--ease); pointer-events: none; }
@@ -274,7 +274,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .toolkit { padding-top: 120px; }
 .toolkit__head { text-align: center; }
 .toolkit__head p { opacity: .65; margin-top: 12px; }
-.toolkit__box { position: relative; height: 520px; margin-top: 24px; overflow: hidden; touch-action: pan-y; }
+.toolkit__box { position: relative; height: 480px; margin-top: 24px; overflow: hidden; touch-action: pan-y; }
 .tool { position: absolute; left: 0; top: 0; width: 96px; height: 115px; margin: -57.5px 0 0 -48px; background: #fff; border-radius: 0; padding: 7px 7px 0; box-shadow: 0 18px 30px rgba(0,0,0,.35); display: flex; flex-direction: column; align-items: center; gap: 6px; user-select: none; touch-action: none; will-change: transform; }
 .tool__logo { width: 82px; height: 76px; border-radius: 0; display: grid; place-items: center; font-weight: 700; font-size: 28px; letter-spacing: -.02em; }
 .tool__logo svg { height: 38px; width: auto; }
@@ -443,3 +443,7 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 .story__end { margin-top: 40px; }
 .story__end .talk { padding-top: 120px; }
 .play__s2 .play__big { line-height: 1.42; }
+
+/* Selected Works: the pinned stage slides up under the heading so there is no empty sky
+   between them; the overlap is sized so the cards still clear the heading by 120px */
+@media (min-width: 861px) { .sw__head { margin-bottom: min(0px, calc(660px - 100vh)); } }
