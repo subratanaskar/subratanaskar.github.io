@@ -44,7 +44,7 @@
     addEventListener("pointerdown", () => cursor.classList.add("down"));
     addEventListener("pointerup", () => cursor.classList.remove("down"));
     document.addEventListener("mouseleave", () => cursor.classList.remove("on"));
-    document.addEventListener("mouseover", (e) => cursor.classList.toggle("hover", !!e.target.closest("a, button, .tool, .show__media")));
+    document.addEventListener("mouseover", (e) => cursor.classList.toggle("hover", !!e.target.closest("a, button, .show__media")));
     (function loop() {
       cx += (mx - cx) * 0.35; cy += (my - cy) * 0.35;
       v.style.transform = `translateX(${mx}px)`; h.style.transform = `translateY(${my}px)`;
@@ -52,6 +52,28 @@
       requestAnimationFrame(loop);
     })();
   }
+
+  /* =========================================================
+     GRID SNAP — hero copy + Selected Works heading start on a background grid line
+     (the grid is 120px, fixed to the window's left edge; portrait is not moved)
+     ========================================================= */
+  (function gridSnap() {
+    const els = [$(".hero__text"), $(".sw__head > div")].filter(Boolean);
+    function snap() {
+      let line = 0;
+      els.forEach((el, i) => {
+        el.style.position = "relative"; el.style.left = "0px";
+        if (innerWidth <= 1100) return;
+        const L = el.getBoundingClientRect().left;
+        if (i === 0) line = Math.max(120, Math.round((L - 20) / 120) * 120);   // hero picks the grid line
+        el.style.left = line - L + "px";                                         // Selected Works uses the same line
+      });
+    }
+    snap();
+    addEventListener("resize", snap);
+    addEventListener("load", snap);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(snap);
+  })();
 
   /* =========================================================
      REVEALS
@@ -227,39 +249,37 @@
     const TW = 427, TH = 163;
     let W = 0, H = 0, road = 0, city = null, running = false, last = 0, taxiX = -500, items = [], throwT = 0, iconIdx = 0, armT = 0, S = 4;
 
-    // Subro's pixel Victoria Memorial + Howrah Bridge (big and phone-size versions)
+    // Subro's pixel Victoria Memorial + Howrah Bridge, drawn crisp at their own pixel size (LP css px per pixel)
     const LM = {};
-    [["vm", "city-memorial"], ["vms", "city-memorial-s"], ["br", "city-bridge"], ["brs", "city-bridge-s"]].forEach(([key, f]) => {
+    [["vm", "city-memorial"], ["br", "city-bridge"]].forEach(([key, f]) => {
       const im = new Image();
       im.onload = () => { LM[key] = im; if (W) city = makeCity(); };
       im.src = `assets/img/${f}.png`;
     });
+    let LP = 3, lmk = [];                                        // landmark rects in css px
+    function placeLandmarks() {
+      lmk = [];
+      LP = W < 700 ? 1 : W < 1100 ? 2 : 3;
+      if (LM.vm) { const w = LM.vm.width * LP, h = LM.vm.height * LP; lmk.push({ im: LM.vm, x: Math.round(W * 0.2 - w / 2), y: road - h, w, h, kind: "vm" }); }
+      if (LM.br) { const w = LM.br.width * LP, h = LM.br.height * LP; lmk.push({ im: LM.br, x: Math.round(Math.min(W * 0.52, W - w - 24)), y: road - h, w, h, kind: "br" }); }
+    }
 
     function makeCity() {
+      placeLandmarks();
       const c = document.createElement("canvas");
       c.width = Math.ceil(W / S) + 2; c.height = Math.ceil(road / S);
       const x = c.getContext("2d"), G = c.height, CW = c.width;
-      x.imageSmoothingEnabled = false;
       let seed = 7;
       const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
-      const pick = (big, small, maxW) => {                       // largest version that fits, never smoothed
-        const im = LM[big] && LM[big].width <= maxW ? LM[big] : LM[small];
-        if (!im) return null;
-        const sc = Math.min(1, maxW / im.width);
-        return { im, w: Math.round(im.width * sc), h: Math.round(im.height * sc) };
-      };
-      const vm = pick("vm", "vms", CW * 0.36), br = pick("br", "brs", CW * 0.56);
-      const vmX = Math.round(CW * 0.2), brX = br ? Math.round(Math.min(CW * 0.5, CW - br.w - 6)) : 0;
-      const vmL = vm ? vmX - vm.w / 2 : 0, vmR = vm ? vmX + vm.w / 2 : 0;
-
+      const vm = lmk.find((l) => l.kind === "vm"), br = lmk.find((l) => l.kind === "br");
       // ordinary buildings: none behind the memorial, low ones behind the bridge truss
       let px = 0;
       while (px < CW) {
         const bwid = 8 + Math.floor(rnd() * 16);
         let bht = 12 + Math.floor(rnd() * (G * 0.48));
-        const mid = px + bwid / 2;
-        if (vm && mid > vmL - 6 && mid < vmR + 6) { px += bwid + 1; continue; }
-        if (br && mid > brX && mid < brX + br.w) bht = Math.min(bht, Math.round(br.h * 0.5));
+        const mid = (px + bwid / 2) * S;
+        if (vm && mid > vm.x - 24 && mid < vm.x + vm.w + 24) { px += bwid + 1; continue; }
+        if (br && mid > br.x && mid < br.x + br.w) bht = Math.min(bht, Math.round(br.h / S * 0.5));
         x.fillStyle = rnd() > 0.5 ? "#132b63" : "#11275a";
         x.fillRect(px, G - bht, bwid, bht);
         if (rnd() > 0.75) x.fillRect(px + 3, G - bht - 4, 3, 4);              // water tank / antenna
@@ -267,8 +287,6 @@
         for (let wy = G - bht + 4; wy < G - 3; wy += 5) for (let wx = px + 3; wx < px + bwid - 3; wx += 4) if (rnd() > 0.55) x.fillRect(wx, wy, 1, 1);
         px += bwid + 1 + Math.floor(rnd() * 4);
       }
-      if (vm) x.drawImage(vm.im, Math.round(vmL), G - vm.h, vm.w, vm.h);
-      if (br) x.drawImage(br.im, brX, G - br.h, br.w, br.h);
       return c;
     }
 
@@ -294,6 +312,9 @@
       ctx.imageSmoothingEnabled = false;
       ctx.clearRect(0, 0, W, H);
       ctx.drawImage(city, 0, 0, city.width, city.height, 0, 0, city.width * S, city.height * S);
+      ctx.globalAlpha = 0.68;                                    // landmarks sit back in the night haze
+      lmk.forEach((l) => ctx.drawImage(l.im, l.x, l.y, l.w, l.h));
+      ctx.globalAlpha = 1;
       ctx.fillStyle = C.navyDeep; ctx.fillRect(0, road, W, H - road);
       ctx.fillStyle = "rgba(253,250,220,.25)";
       const dash = 48, off = (now * speed / 1000 * 0.0) % dash;
@@ -567,76 +588,32 @@
       box.appendChild(d);
       return d;
     });
-    let W = 0, H = 0, bodies = [], running = false, started = false, grab = null, last = 0;
-    let R = 72, HW = 66, HH = 79;
-    function size() {
-      W = box.clientWidth; H = box.clientHeight;
-      const t = els[0]; HW = t.offsetWidth / 2; HH = t.offsetHeight / 2; R = HW * 1.09;
+    // polaroids scattered across a band, overlapping and tilted (like a pile of photo cards), no interaction
+    const ORDER = ["Illustrator", "Procreate", "Photoshop", "Claude", "After Effects", "ChatGPT", "Premiere Pro", "Framer", "Figma", "SketchUp", "InDesign", "AutoCAD", "ArcGIS"];
+    const seq = ORDER.map((n) => TOOLS.findIndex((t) => t.n === n)).filter((i) => i >= 0);
+    TOOLS.forEach((t, i) => { if (!seq.includes(i)) seq.push(i); });
+    let seed = 23;
+    const rnd = () => ((seed = (seed * 9301 + 49297) % 233280) / 233280);
+    const jit = seq.map((_, k) => ({ a: (rnd() - 0.5) * 44, y: rnd(), x: (rnd() - 0.5) * 18, up: k % 2 === 0 }));
+    function layout() {
+      const W = box.clientWidth, cw = els[0].offsetWidth, ch = els[0].offsetHeight;
+      const bands = W < 560 ? 3 : W < 1000 ? 2 : 1, per = Math.ceil(seq.length / bands);
+      const usable = Math.min(W - 40, bands > 1 ? W : Math.max(700, W * 0.84)), left = (W - usable) / 2;
+      const spread = ch * (bands > 1 ? 0.7 : 1.45);                 // vertical scatter inside a band
+      const bandH = spread + ch;
+      box.style.height = bands * bandH + 40 + "px";
+      seq.forEach((ti, k) => {
+        const el = els[ti], band = Math.floor(k / per), inBand = Math.min(per, seq.length - band * per), j = k - band * per;
+        const step = (usable - cw - 20) / Math.max(1, inBand - 1);
+        const x = left + 10 + cw / 2 + j * step + jit[k].x;
+        const y = 20 + band * bandH + ch / 2 + (jit[k].up ? jit[k].y * 0.45 : 0.45 + jit[k].y * 0.55) * spread;
+        el.style.transform = `translate(${x}px,${y}px) rotate(${jit[k].a}deg)`;
+        el.style.zIndex = 1 + ((k * 5) % seq.length);
+      });
     }
-    function init() {
-      size();
-      const rows = W < 760 ? 2 : 1, n = Math.ceil(els.length / rows), span = Math.max(200, W - 2 * HW - 40);
-      bodies = els.map((el, i) => ({ el, row: i % rows, x: HW + 20 + ((Math.floor(i / rows) + 0.5) / n) * span, y: -120 - i * 70, vx: (Math.random() - 0.5) * 40, vy: 0, a: (Math.random() - 0.5) * 0.5, va: (Math.random() - 0.5) * 0.6, ph: i * 1.7 }));
-    }
-    let clock = 0;
-    function stepPhys(dt) {
-      // slow, floaty fall; cards hover above the floor and bob gently instead of landing
-      const g = 520, lift = Math.max(70, H * 0.14);
-      clock += dt;
-      for (const b of bodies) {
-        if (b === grab) continue;
-        b.vy += g * dt;
-        b.vx *= 1 - 1.2 * dt; b.vy *= 1 - 0.6 * dt;               // air drag
-        const fl = H - HH - lift - b.row * (HH * 2 + 18) + Math.sin(clock * 1.3 + b.ph) * 9;  // float line (2 rows on phones)
-        if (b.y > fl) {
-          b.vy -= (b.y - fl) * 38 * dt;                           // soft spring pushes it back up
-          b.vy *= 1 - 3.5 * dt;
-          b.va += (-b.a * 2.2 + Math.sin(clock * 0.9 + b.ph) * 0.15) * dt;
-          b.va *= 1 - 2.5 * dt;
-        }
-        b.x += b.vx * dt; b.y += b.vy * dt; b.a += b.va * dt;
-        if (b.y > H - HH) { b.y = H - HH; b.vy = Math.min(0, b.vy); }
-        if (b.y < HH && b.vy < 0) { b.vy *= -0.4; }
-        if (b.x < HW) { b.x = HW; b.vx *= -0.5; } if (b.x > W - HW) { b.x = W - HW; b.vx *= -0.5; }
-        b.va *= 1 - 0.4 * dt;
-      }
-      for (let i = 0; i < bodies.length; i++) for (let j = i + 1; j < bodies.length; j++) {
-        const A = bodies[i], B = bodies[j], dx = B.x - A.x, dy = B.y - A.y, d = Math.hypot(dx, dy) || 1;
-        const md = R * 1.55;
-        if (d < md) {
-          const o = (md - d) / 2 * 0.5, nx = dx / d, ny = dy / d;     // soft separation (no jitter)
-          if (A !== grab) { A.x -= nx * o; A.y -= ny * o; } if (B !== grab) { B.x += nx * o; B.y += ny * o; }
-          const rv = (B.vx - A.vx) * nx + (B.vy - A.vy) * ny;
-          if (rv < 0) { const imp = -rv * 0.4; if (A !== grab) { A.vx -= nx * imp; A.vy -= ny * imp; A.va -= 0.08; } if (B !== grab) { B.vx += nx * imp; B.vy += ny * imp; B.va += 0.08; } }
-        }
-      }
-    }
-    function render() { for (const b of bodies) b.el.style.transform = `translate(${b.x}px,${b.y}px) rotate(${b.a}rad)`; }
-    function loop(now) {
-      if (!running) return;
-      const dt = Math.min(0.033, (now - (last || now)) / 1000); last = now;
-      stepPhys(dt / 2); stepPhys(dt / 2); render();
-      requestAnimationFrame(loop);
-    }
-    box.addEventListener("pointerdown", (e) => {
-      const el = e.target.closest(".tool"); if (!el) return;
-      grab = bodies.find((b) => b.el === el); if (!grab) return;
-      el.setPointerCapture(e.pointerId); el.classList.add("grab");
-      const r = box.getBoundingClientRect();
-      grab.ox = e.clientX - r.left - grab.x; grab.oy = e.clientY - r.top - grab.y; grab.lx = e.clientX; grab.lt = performance.now();
-    });
-    box.addEventListener("pointermove", (e) => {
-      if (!grab) return;
-      const r = box.getBoundingClientRect(), now = performance.now(), dt = Math.max(1, now - grab.lt) / 1000;
-      const nx = clamp(e.clientX - r.left - grab.ox, HW, W - HW), ny = clamp(e.clientY - r.top - grab.oy, HH, H - HH);
-      grab.vx = (nx - grab.x) / dt; grab.vy = (ny - grab.y) / dt; grab.x = nx; grab.y = ny; grab.lt = now;
-      grab.a += (grab.vx / 6000);
-    });
-    const release = () => { if (!grab) return; grab.el.classList.remove("grab"); grab.vx = clamp(grab.vx, -1100, 1100); grab.vy = clamp(grab.vy, -1100, 1100); grab.va = grab.vx / 900; grab = null; };
-    box.addEventListener("pointerup", release); box.addEventListener("pointercancel", release);
-    addEventListener("resize", size);
-    init(); render();
-    onVisible(box, () => { if (!started) { started = true; init(); } running = true; last = 0; requestAnimationFrame(loop); }, () => (running = false), 0.2);
+    layout();
+    addEventListener("resize", layout);
+    addEventListener("load", layout);
   })();
 
   /* =========================================================
