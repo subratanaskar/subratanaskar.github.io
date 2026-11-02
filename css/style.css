@@ -466,6 +466,5 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 .comment__row > div { display: flex; flex-direction: column; gap: 2px; }
 .comment__row b { font-size: 14px; line-height: 20px; letter-spacing: -.01em; }
 .comment__row p { margin: 0; width: 250px; font-size: 12px; line-height: 1.5; letter-spacing: -.01em; }
-.comment__avatar { flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--olive); display: grid; place-items: center; overflow: hidden; }
-.comment__row .comment__avatar img { width: 30px; height: 30px; }
+.comment__row img.comment__avatar { flex: none; width: 40px; height: 40px; image-rendering: auto; }
 @media (max-width: 560px) { .comment { width: auto; } .comment__row p { width: auto; } .comment__br { display: none; } }
