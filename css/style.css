@@ -49,9 +49,9 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 /* 120px design grid behind everything (from the Figma frames).
    One grid, anchored to the top-left of the window and fixed, so the nav,
    every section and the My Story panel all share exactly the same lines. */
-main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
+body, main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
   background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
-  background-size: 120px 120px; background-position: 0 0; background-attachment: fixed;
+  background-size: 120px 120px; background-position: var(--gx, 0px) 0; background-attachment: fixed;
 }
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 
@@ -208,7 +208,7 @@ main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 .sw__legend { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
 .lg-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 6px; vertical-align: 1px; }
 .lg-dot--o { background: var(--olive); } .lg-dot--p { background: var(--pink); }
-.sw__track { position: absolute; left: 0; bottom: 220px; display: flex; gap: 22vw; padding-left: 100vw; padding-right: max(24px, calc(50vw - 380px)); z-index: 2; will-change: transform; }
+.sw__track { position: absolute; left: 0; bottom: 220px; display: flex; gap: 22vw; padding-left: 100%; padding-right: max(24px, calc(50% - 380px)); z-index: 2; will-change: transform; }
 .sw__ground { position: absolute; left: 0; right: 0; bottom: 0; height: 96px; z-index: 3; background-repeat: repeat-x; image-rendering: pixelated; }
 .sw__mascot { position: absolute; left: 50%; bottom: 92px; width: 165px; height: 189px; margin-left: -82px; z-index: 4; image-rendering: pixelated; }
 .sw__progress { position: absolute; left: var(--gutter); right: var(--gutter); bottom: 40px; height: 2px; background: rgba(253,250,220,.15); z-index: 5; }
@@ -440,7 +440,7 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 }
 
 /* Let's Talk: text block sits 120px further right on desktop */
-@media (min-width: 861px) { .talk .talk__text { position: relative; left: 120px; } }
+@media (min-width: 861px) { .talk .talk__text { padding-left: min(120px, 8vw); } }
 /* the same Let's Talk + contact + footer, repeated at the end of My Story */
 .story__end { margin-top: 40px; }
 .story__end .talk { padding-top: 120px; }
@@ -468,3 +468,32 @@ body.story-open .nav [data-open-story] .dot { background: var(--olive); transfor
 .comment__row p { margin: 0; width: 250px; font-size: 12px; line-height: 1.5; letter-spacing: -.01em; }
 .comment__row img.comment__avatar { flex: none; width: 40px; height: 40px; image-rendering: auto; }
 @media (max-width: 560px) { .comment { width: auto; } .comment__row p { width: auto; } .comment__br { display: none; } }
+
+/* ---------- max width 1440px: the whole page sits in a centred 1440 column ---------- */
+main, .footer { max-width: var(--max); margin-inline: auto; }
+.sw__track { gap: min(22vw, 316px); }
+
+/* ---------- tablet + phone ---------- */
+@media (max-width: 860px) {
+  /* project card sits above the running character instead of behind it */
+  .sw__track { bottom: 232px; gap: 40vw; }
+  .hero { min-height: calc(100svh - 72px); align-content: center; }
+}
+/* short phones (iPhone SE etc.): smaller card image so the card still clears the nav */
+@media (max-width: 860px) and (max-height: 760px) {
+  .card__media { height: min(22vh, 56vw); }
+  .sw__head { padding-top: 64px; }
+}
+/* tablets (portrait): a little more room and larger text than phones */
+@media (min-width: 600px) and (max-width: 860px) {
+  .hero__art { width: min(50%, 320px); }
+  .card { width: min(78vw, 560px); padding: 18px; }
+  .card__desc { font-size: 14px; }
+  .toolkit__box { height: 400px; }
+}
+
+/* phones/tablets: keep the Selected Works intro line, just smaller */
+@media (max-width: 860px) {
+  .sw__head .sw__lede { display: block; font-size: 16px; line-height: 1.45; margin-top: 12px; max-width: 520px; }
+  .sw__hint { margin-top: 24px; }
+}

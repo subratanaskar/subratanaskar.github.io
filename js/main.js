@@ -60,12 +60,14 @@
   (function gridSnap() {
     const els = [$(".hero__text"), $(".sw__head > div")].filter(Boolean);
     function snap() {
+      const gx = Math.max(0, (document.documentElement.clientWidth - 1440) / 2);
+      document.documentElement.style.setProperty("--gx", gx + "px");
       let line = 0;
       els.forEach((el, i) => {
         el.style.position = "relative"; el.style.left = "0px";
         if (innerWidth <= 1100) return;
         const L = el.getBoundingClientRect().left;
-        if (i === 0) line = Math.max(120, Math.round((L - 20) / 120) * 120);   // hero picks the grid line
+        if (i === 0) line = gx + Math.max(120, Math.round((L - gx - 20) / 120) * 120);   // hero picks the grid line
         el.style.left = line - L + "px";                                         // Selected Works uses the same line
       });
     }
@@ -140,6 +142,9 @@
     video.addEventListener("error", finishLoader);
     loader.addEventListener("click", finishLoader);
     addEventListener("keydown", (e) => { if (e.key === "Escape" && !started) finishLoader(); });
+    // play the intro face clip 0.5s longer than its natural length
+    const slow = () => { if (video.duration) { video.defaultPlaybackRate = video.playbackRate = video.duration / (video.duration + 0.5); } };
+    if (video.readyState >= 1) slow(); else video.addEventListener("loadedmetadata", slow);
     const pr = video.play();
     if (pr && pr.catch) pr.catch(() => setTimeout(finishLoader, 600));
     setTimeout(finishLoader, 5000);                      // the face clip is ~1.7s; never hang on a slow network
@@ -453,8 +458,8 @@
     const swHead = $(".sw__head", sec);
     function layout() {
       sec.style.height = "auto";
-      maxShift = Math.max(0, track.scrollWidth - innerWidth);
       const stk = $(".sw__sticky", sec);
+      maxShift = Math.max(0, track.scrollWidth - (stk ? stk.clientWidth : innerWidth));
       const hh = stk ? stk.offsetTop : (swHead ? swHead.offsetHeight : 0);   // where the stage starts inside the section
       sec.style.height = hh + innerHeight + maxShift + "px";
       top = sec.getBoundingClientRect().top + scrollY + hh;
@@ -467,7 +472,7 @@
       cityEl.style.transform = `translate3d(${-shift * 0.35}px,0,0)`;
       ground.style.backgroundPosition = `${-shift}px 0`;
       prog.style.width = p * 100 + "%";
-      const mid = innerWidth / 2;
+      const sr = $(".sw__sticky", sec).getBoundingClientRect(), mid = sr.left + sr.width / 2;
       cards.forEach((c) => { const r = c.getBoundingClientRect(); c.classList.toggle("near", r.left < mid + 120 && r.right > mid - 120); });
       const dy = scrollY - lastY; lastY = scrollY;
       if (p > 0 && p < 1 && dy) {
