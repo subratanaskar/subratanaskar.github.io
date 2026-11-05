@@ -97,8 +97,8 @@ body, main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
 @media (hover: hover) and (pointer: fine) { html.has-cursor, html.has-cursor a, html.has-cursor button { cursor: none; } }
 
 /* ---------- 1. loader ---------- */
-.loader { position: fixed; inset: 0; z-index: 200; background: #fdfdfd; display: grid; place-items: center; transition: opacity .8s var(--ease), visibility .8s; }
-.loader video { width: 100%; height: 100%; object-fit: contain; }
+.loader { position: fixed; inset: 0; z-index: 200; background: #fcfcfc; overflow: hidden; display: grid; place-items: center; transition: opacity .8s var(--ease), visibility .8s; }
+.loader video { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; background: #fcfcfc; }
 .loader.done { opacity: 0; visibility: hidden; }
 .loader__skip { position: absolute; right: 24px; bottom: 24px; font-size: 14px; font-weight: 500; color: var(--navy); background: rgba(255,255,255,.85); border: 1px solid rgba(15,36,87,.2); padding: 10px 16px; border-radius: 99px; }
 .loader__bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(15,36,87,.08); }

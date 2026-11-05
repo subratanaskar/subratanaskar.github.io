@@ -132,7 +132,9 @@
     runHello();
   }
 
-  if (store.get("subro-seen") === "1" || reduce) {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  scrollTo(0, 0);
+  if (reduce) {
     loader.remove(); hello.remove();
     document.body.classList.remove("is-loading");
     startLanding();
@@ -142,6 +144,7 @@
     video.addEventListener("error", finishLoader);
     loader.addEventListener("click", finishLoader);
     addEventListener("keydown", (e) => { if (e.key === "Escape" && !started) finishLoader(); });
+    if (innerHeight > innerWidth) { video.src = "assets/video/subro-face-portrait.mp4"; video.load(); }
     // play the intro face clip 0.5s longer than its natural length
     const slow = () => { if (video.duration) { video.defaultPlaybackRate = video.playbackRate = video.duration / (video.duration + 0.5); } };
     if (video.readyState >= 1) slow(); else video.addEventListener("loadedmetadata", slow);
