@@ -13,7 +13,6 @@
   addEventListener("resize", fit);
 
   // on screens wider than 1440px, let each full-width band's colour run to the screen edges
-  document.body.style.background = getComputedStyle(root).backgroundColor;
   [...root.children].forEach((el) => {
     const bg = getComputedStyle(el).backgroundColor;
     if (el.offsetWidth >= 1439 && bg && bg !== "rgba(0, 0, 0, 0)" && bg !== "transparent") {
@@ -44,10 +43,13 @@
 
   // reading progress
   const prog = document.getElementById("prog");
+  const back = document.querySelector(".pj-back"), end = document.querySelector(".pj-end");
   const onScroll = () => {
     const max = document.documentElement.scrollHeight - innerHeight;
     prog.style.transform = `scaleX(${max > 0 ? scrollY / max : 0})`;
     if (!reduce) draw();
+    // the floating Back to Works button steps aside once the Previous / Next buttons are on screen
+    if (back && end) back.classList.toggle("away", end.getBoundingClientRect().top < innerHeight - 40);
   };
   addEventListener("scroll", onScroll, { passive: true });
   onScroll();
@@ -61,6 +63,11 @@
     img.style.pointerEvents = "auto";
     img.addEventListener("click", () => { lbImg.src = img.src; lb.classList.add("on"); });
   });
+  // links back to the home page skip its intro animation (a refresh of the home page still plays it)
+  document.querySelectorAll('a[href^="../../"]').forEach((a) => a.addEventListener("click", () => {
+    try { sessionStorage.setItem("subro-skip-intro", "1"); } catch (e) {}
+  }));
+
   const close = () => lb.classList.remove("on");
   lb.addEventListener("click", close);
   addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });

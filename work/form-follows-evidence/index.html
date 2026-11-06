@@ -3,43 +3,57 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
 <title>Form Follows Evidence — Subrata Naskar</title>
 <meta name="description" content="A UX audit and redesign of India’s Case Exhibit Submission Form, the document that travels with physical evidence from crime scene to forensic lab." />
-<link rel="icon" href="../../assets/img/favicon.png" />
+<meta name="theme-color" content="#0f2457" />
+<link rel="icon" type="image/svg+xml" href="../../assets/img/face-logo.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans:opsz,wght@9..40,300..700&family=Inter:wght@500&family=Source+Sans+3:ital,wght@0,300..700;1,400&display=swap" />
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=switzer@500&display=swap" />
+<link rel="stylesheet" href="../../css/style.css?v=20261106b" />
 <style>
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Light.woff2") format("woff2"); font-weight: 300; font-display: swap; }
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-RegularItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
-@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Heavy.woff2") format("woff2"); font-weight: 900; font-display: swap; }
-@font-face { font-family: "Season Sans"; src: url("../../assets/fonts/SeasonSans-TRIAL-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
-@font-face { font-family: "Season Sans"; src: url("../../assets/fonts/SeasonSans-TRIAL-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
-@font-face { font-family: "Season Sans"; src: url("../../assets/fonts/SeasonSans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
-/* minimal reset matching the Figma export's assumptions */
-*, ::before, ::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
-html { -webkit-text-size-adjust: 100%; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../../assets/fonts/Saans-TRIAL-Heavy.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
+
 html, body { overflow-x: clip; }
-body { background: #0d0d0d; font-family: "Saans", sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-img, svg, video { display: block; max-width: 100%; height: auto; }
-ol, ul { list-style: none; }
-a { color: inherit; text-decoration: none; }
-/* the 1440px Figma canvas, scaled to the viewport */
-.doc { width: 1440px; height: 41474px; margin: 0 auto; zoom: var(--z, 1); position: relative; }
+/* ---- project chrome ---- */
+.pj-back { position: fixed; z-index: 55; top: 88px; left: max(var(--gutter), calc((100% - var(--max)) / 2 + 80px)); }
+.pj-back { transition: opacity .3s, visibility .3s; } .pj-back.away { opacity: 0; visibility: hidden; }
+.pj-btn { display: inline-flex; align-items: center; gap: 12px; padding: 8px 16px 8px 8px; background: var(--olive); color: var(--ink-blue);
+  border: 3px solid #fff; box-shadow: 6px 6px 0 var(--pink); font: 600 18px/1 var(--font); letter-spacing: -.01em; white-space: nowrap;
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
+.pj-btn--r { padding: 8px 8px 8px 16px; }
+.pj-btn i { display: grid; place-items: center; width: 32px; height: 32px; background: var(--cream); }
+.pj-btn svg { width: 22px; height: 22px; fill: none; stroke: var(--ink-blue); stroke-width: 2.6; stroke-linecap: square; }
+.pj-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--pink); }
+.pj-btn--l:hover i svg { transform: translateX(-3px); } .pj-btn--r:hover i svg { transform: translateX(3px); }
+.pj-btn svg { transition: transform .25s var(--ease); }
+.pj-pager { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 96px; padding-bottom: 32px; }
+.pj-pager__item { display: grid; gap: 14px; }
+.pj-pager__item--r { justify-items: end; text-align: right; }
+.pj-pager__name { font-size: 14px; color: var(--muted); }
+@media (max-width: 860px) {
+  .pj-back { position: relative; top: auto; left: auto; padding: 16px var(--gutter); background: #fff; }
+  .pj-back.away { opacity: 1; visibility: visible; }
+  .pj-btn { font-size: 14px; gap: 8px; border-width: 2px; box-shadow: 4px 4px 0 var(--pink); }
+  .pj-btn i { width: 24px; height: 24px; } .pj-btn svg { width: 16px; height: 16px; }
+  .pj-pager { padding-top: 56px; }
+}
+/* ---- the 1440px Figma canvas, scaled to the viewport ---- */
+.doc { width: 1440px; height: 41474px; margin: 0 auto; zoom: var(--z, 1); position: relative; font-family: "Saans", sans-serif; color: initial; line-height: 1.5; }
 .doc > div { width: 1440px; height: 41474px; }
-/* top bar back to the portfolio */
-.bar { position: fixed; top: 16px; left: 16px; z-index: 50; display: flex; gap: 8px; }
-.bar a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 99px; background: rgba(15,36,87,.92); color: #fdfadc; font: 500 14px/1 "Season Sans", sans-serif; box-shadow: 0 6px 20px rgba(0,0,0,.18); transition: transform .25s, background .25s; }
-.bar a:hover { transform: translateY(-2px); background: #0f2457; }
-@media (max-width: 600px) { .bar { top: 10px; left: 10px; } .bar a { padding: 7px 12px; font-size: 12px; } }
-.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 60; background: transparent; }
-.progress span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: #c8860a; }
-/* interactions */
+.doc *, .doc ::before, .doc ::after { box-sizing: border-box; margin: 0; padding: 0; border: 0 solid; }
+.doc img { display: block; max-width: 100%; height: auto; }
+.doc ol, .doc ul { list-style: none; }
+.progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 70; }
+.progress span { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--pink); }
 .rv { opacity: 0; transform: translateY(40px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
 .rv.in { opacity: 1; transform: none; }
 .zoomable { cursor: zoom-in; transition: filter .3s; }
@@ -2433,9 +2447,23 @@ a { color: inherit; text-decoration: none; }
 .c8ed{padding-top:11.5px}
 </style>
 </head>
-<body>
+<body class="pj">
 <div class="progress" aria-hidden="true"><span id="prog"></span></div>
-<nav class="bar"><a href="../../#work" aria-label="Back to Selected Works">← Back to portfolio</a></nav>
+<header class="nav" id="nav">
+  <a class="nav__logo" href="../../" aria-label="Subro — back to top"><svg class="face-logo" width="48" height="56" aria-hidden="true" viewBox="0 0 50 58" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg"><path fill="#2D2D39" d="M16 0h9v1h-9zM16 1h9v1h-9zM12 2h19v1h-19zM12 3h19v1h-19zM33 3h5v1h-5zM10 4h10v1h-10zM26 4h12v1h-12zM10 5h10v1h-10zM26 5h8v1h-8zM36 5h4v1h-4zM10 6h10v1h-10zM29 6h5v1h-5zM37 6h3v1h-3zM7 7h12v1h-12zM20 7h4v1h-4zM29 7h6v1h-6zM38 7h2v1h-2zM7 8h3v1h-3zM13 8h6v1h-6zM20 8h4v1h-4zM31 8h4v1h-4zM37 8h3v1h-3zM5 9h5v1h-5zM15 9h14v1h-14zM31 9h9v1h-9zM5 10h5v1h-5zM15 10h14v1h-14zM31 10h9v1h-9zM1 11h6v1h-6zM10 11h12v1h-12zM24 11h15v1h-15zM1 12h6v1h-6zM10 12h35v1h-35zM1 13h6v1h-6zM9 13h37v1h-37zM1 14h6v1h-6zM8 14h40v1h-40zM1 15h6v1h-6zM8 15h31v1h-31zM44 15h4v1h-4zM3 16h4v1h-4zM8 16h5v1h-5zM15 16h12v1h-12zM31 16h8v1h-8zM46 16h2v1h-2zM3 17h4v1h-4zM8 17h7v1h-7zM17 17h10v1h-10zM31 17h13v1h-13zM46 17h2v1h-2zM3 18h12v1h-12zM17 18h5v1h-5zM33 18h11v1h-11zM46 18h2v1h-2zM3 19h19v1h-19zM33 19h11v1h-11zM46 19h4v1h-4zM0 20h20v1h-20zM34 20h10v1h-10zM48 20h2v1h-2zM0 21h5v1h-5zM9 21h11v1h-11zM35 21h11v1h-11zM48 21h2v1h-2zM0 22h5v1h-5zM9 22h8v1h-8zM36 22h10v1h-10zM48 22h2v1h-2zM0 23h3v1h-3zM5 23h11v1h-11zM36 23h14v1h-14zM0 24h3v1h-3zM5 24h9v1h-9zM38 24h10v1h-10zM2 25h6v1h-6zM9 25h5v1h-5zM32 25h2v1h-2zM38 25h10v1h-10zM2 26h10v1h-10zM27 26h7v1h-7zM38 26h8v1h-8zM2 27h10v1h-10zM15 27h6v1h-6zM26 27h11v1h-11zM39 27h7v1h-7zM2 28h9v1h-9zM14 28h8v1h-8zM25 28h5v1h-5zM37 28h1v1h-1zM39 28h4v1h-4zM3 29h8v1h-8zM12 29h5v1h-5zM20 29h7v1h-7zM33 29h2v1h-2zM38 29h1v1h-1zM40 29h3v1h-3zM3 30h10v1h-10zM22 30h1v1h-1zM26 30h1v1h-1zM29 30h6v1h-6zM38 30h1v1h-1zM40 30h2v1h-2zM6 31h4v1h-4zM11 31h1v1h-1zM16 31h5v1h-5zM22 31h1v1h-1zM26 31h1v1h-1zM31 31h3v1h-3zM35 31h2v1h-2zM38 31h1v1h-1zM6 32h4v1h-4zM11 32h1v1h-1zM14 32h2v1h-2zM17 32h3v1h-3zM22 32h1v1h-1zM27 32h1v1h-1zM31 32h3v1h-3zM38 32h1v1h-1zM9 33h1v1h-1zM11 33h1v1h-1zM17 33h3v1h-3zM22 33h1v1h-1zM27 33h1v1h-1zM38 33h1v1h-1zM9 34h1v1h-1zM11 34h1v1h-1zM28 34h1v1h-1zM9 35h1v1h-1zM21 35h1v1h-1zM29 35h8v1h-8zM9 36h1v1h-1zM20 36h1v1h-1zM9 37h1v1h-1zM14 37h6v1h-6zM41 38h1v1h-1zM21 39h11v1h-11zM41 39h1v1h-1zM44 39h1v1h-1zM18 40h16v1h-16zM40 40h3v1h-3zM11 41h1v1h-1zM18 41h17v1h-17zM40 41h3v1h-3zM10 42h2v1h-2zM17 42h4v1h-4zM32 42h3v1h-3zM40 42h3v1h-3zM10 43h2v1h-2zM17 43h5v1h-5zM30 43h1v1h-1zM33 43h1v1h-1zM40 43h3v1h-3zM10 44h2v1h-2zM18 44h2v1h-2zM39 44h4v1h-4zM10 45h3v1h-3zM34 45h1v1h-1zM39 45h3v1h-3zM11 46h3v1h-3zM34 46h2v1h-2zM37 46h5v1h-5zM12 47h4v1h-4zM18 47h1v1h-1zM23 47h6v1h-6zM34 47h8v1h-8zM12 48h4v1h-4zM18 48h1v1h-1zM24 48h4v1h-4zM33 48h7v1h-7zM13 49h8v1h-8zM32 49h7v1h-7zM14 50h7v1h-7zM32 50h6v1h-6zM15 51h8v1h-8zM25 51h3v1h-3zM30 51h8v1h-8zM16 52h7v1h-7zM25 52h3v1h-3zM30 52h6v1h-6zM17 53h18v1h-18zM19 54h14v1h-14zM20 55h10v1h-10zM23 56h6v1h-6zM24 57h4v1h-4z"/><path fill="#5C534E" d="M20 4h6v1h-6zM20 5h6v1h-6zM20 6h9v1h-9zM19 7h1v1h-1zM24 7h5v1h-5zM10 8h3v1h-3zM19 8h1v1h-1zM24 8h7v1h-7zM10 9h5v1h-5zM29 9h2v1h-2zM10 10h5v1h-5zM29 10h2v1h-2zM7 11h3v1h-3zM22 11h2v1h-2zM7 12h3v1h-3zM45 12h1v1h-1zM7 13h2v1h-2zM7 14h1v1h-1zM7 15h1v1h-1zM39 15h5v1h-5zM7 16h1v1h-1zM13 16h2v1h-2zM27 16h2v1h-2zM39 16h7v1h-7zM7 17h1v1h-1zM15 17h2v1h-2zM44 17h2v1h-2zM15 18h2v1h-2zM44 18h2v1h-2zM44 19h2v1h-2zM44 20h4v1h-4zM5 21h4v1h-4zM34 21h1v1h-1zM46 21h2v1h-2zM5 22h4v1h-4zM46 22h2v1h-2zM3 23h2v1h-2zM3 24h2v1h-2zM8 25h1v1h-1zM31 25h1v1h-1zM34 26h2v1h-2zM14 27h1v1h-1zM21 27h1v1h-1zM37 27h1v1h-1zM13 28h1v1h-1zM36 28h1v1h-1zM38 28h1v1h-1zM43 28h1v1h-1zM17 29h1v1h-1zM19 29h1v1h-1zM13 30h1v1h-1zM21 30h1v1h-1zM35 30h1v1h-1zM42 30h1v1h-1zM41 31h1v1h-1zM41 32h1v1h-1zM41 33h2v1h-2zM22 34h1v1h-1zM37 34h1v1h-1zM41 34h1v1h-1zM43 34h1v1h-1zM12 35h1v1h-1zM41 35h1v1h-1zM43 35h1v1h-1zM12 36h2v1h-2zM21 36h1v1h-1zM41 36h1v1h-1zM20 37h1v1h-1zM41 37h1v1h-1zM9 38h1v1h-1zM9 39h1v1h-1zM10 41h1v1h-1zM39 41h1v1h-1zM39 42h1v1h-1zM34 43h1v1h-1zM38 43h2v1h-2zM12 44h2v1h-2zM34 44h1v1h-1zM37 44h2v1h-2zM13 45h1v1h-1zM18 45h1v1h-1zM35 45h4v1h-4zM14 46h2v1h-2zM18 46h1v1h-1zM36 46h1v1h-1zM16 47h2v1h-2zM33 47h1v1h-1zM16 48h2v1h-2zM39 49h1v1h-1zM21 50h2v1h-2zM25 50h3v1h-3zM30 50h2v1h-2zM38 50h1v1h-1zM23 51h2v1h-2zM28 51h2v1h-2zM15 52h1v1h-1zM23 52h2v1h-2zM28 52h2v1h-2zM36 52h1v1h-1zM19 55h1v1h-1zM30 55h1v1h-1zM22 56h1v1h-1z"/><path fill="#A8653A" d="M19 30h2v1h-2zM21 31h1v1h-1zM23 38h1v1h-1zM27 38h1v1h-1zM32 39h1v1h-1zM40 39h1v1h-1z"/><path fill="#C9814A" d="M29 16h2v1h-2zM27 17h3v1h-3zM33 20h1v1h-1zM17 22h1v1h-1zM34 22h2v1h-2zM16 23h1v1h-1zM14 24h2v1h-2zM36 24h2v1h-2zM38 27h1v1h-1zM11 28h1v1h-1zM24 28h1v1h-1zM30 28h1v1h-1zM44 28h1v1h-1zM11 29h1v1h-1zM18 29h1v1h-1zM27 29h6v1h-6zM43 29h2v1h-2zM14 30h5v1h-5zM28 30h1v1h-1zM36 30h1v1h-1zM43 30h1v1h-1zM10 31h1v1h-1zM12 31h4v1h-4zM29 31h1v1h-1zM42 31h1v1h-1zM10 32h1v1h-1zM21 32h1v1h-1zM29 32h1v1h-1zM43 32h2v1h-2zM7 33h2v1h-2zM21 33h1v1h-1zM43 33h2v1h-2zM8 34h1v1h-1zM21 34h1v1h-1zM42 34h1v1h-1zM44 34h1v1h-1zM20 35h1v1h-1zM22 35h1v1h-1zM42 35h1v1h-1zM44 35h1v1h-1zM42 36h2v1h-2zM13 37h1v1h-1zM21 37h1v1h-1zM10 38h1v1h-1zM20 38h2v1h-2zM24 38h3v1h-3zM40 38h1v1h-1zM8 39h1v1h-1zM10 39h1v1h-1zM20 39h1v1h-1zM33 39h1v1h-1zM39 39h1v1h-1zM9 40h3v1h-3zM34 40h1v1h-1zM9 41h1v1h-1zM17 41h1v1h-1zM21 42h2v1h-2zM29 42h2v1h-2zM38 42h1v1h-1zM37 43h1v1h-1zM17 44h1v1h-1zM20 44h1v1h-1zM22 44h8v1h-8zM33 44h1v1h-1zM36 44h1v1h-1zM19 45h1v1h-1zM33 45h1v1h-1zM19 46h1v1h-1zM33 46h1v1h-1zM19 47h1v1h-1zM19 48h1v1h-1zM24 49h4v1h-4zM24 50h1v1h-1z"/><path fill="#F2A562" d="M30 17h1v1h-1zM22 18h11v1h-11zM22 19h11v1h-11zM20 20h13v1h-13zM20 21h14v1h-14zM18 22h16v1h-16zM17 23h19v1h-19zM16 24h20v1h-20zM14 25h17v1h-17zM34 25h4v1h-4zM12 26h15v1h-15zM36 26h2v1h-2zM12 27h2v1h-2zM22 27h4v1h-4zM12 28h1v1h-1zM22 28h2v1h-2zM31 28h5v1h-5zM35 29h3v1h-3zM39 29h1v1h-1zM45 29h1v1h-1zM23 30h3v1h-3zM27 30h1v1h-1zM37 30h1v1h-1zM39 30h1v1h-1zM44 30h2v1h-2zM23 31h3v1h-3zM27 31h2v1h-2zM37 31h1v1h-1zM39 31h2v1h-2zM43 31h3v1h-3zM12 32h2v1h-2zM23 32h4v1h-4zM28 32h1v1h-1zM35 32h3v1h-3zM39 32h2v1h-2zM42 32h1v1h-1zM45 32h1v1h-1zM10 33h1v1h-1zM12 33h4v1h-4zM23 33h4v1h-4zM28 33h10v1h-10zM39 33h2v1h-2zM45 33h1v1h-1zM7 34h1v1h-1zM10 34h1v1h-1zM12 34h9v1h-9zM23 34h5v1h-5zM29 34h8v1h-8zM38 34h3v1h-3zM45 34h1v1h-1zM7 35h2v1h-2zM10 35h2v1h-2zM13 35h7v1h-7zM23 35h6v1h-6zM37 35h4v1h-4zM45 35h1v1h-1zM7 36h2v1h-2zM10 36h2v1h-2zM14 36h6v1h-6zM22 36h19v1h-19zM44 36h2v1h-2zM7 37h2v1h-2zM10 37h3v1h-3zM22 37h19v1h-19zM42 37h3v1h-3zM7 38h2v1h-2zM11 38h9v1h-9zM22 38h1v1h-1zM28 38h12v1h-12zM42 38h3v1h-3zM11 39h9v1h-9zM34 39h5v1h-5zM42 39h2v1h-2zM12 40h6v1h-6zM35 40h5v1h-5zM12 41h5v1h-5zM35 41h4v1h-4zM12 42h5v1h-5zM23 42h6v1h-6zM31 42h1v1h-1zM35 42h3v1h-3zM12 43h5v1h-5zM31 43h2v1h-2zM35 43h2v1h-2zM14 44h3v1h-3zM21 44h1v1h-1zM30 44h3v1h-3zM35 44h1v1h-1zM14 45h4v1h-4zM20 45h13v1h-13zM16 46h2v1h-2zM20 46h13v1h-13zM20 47h3v1h-3zM29 47h4v1h-4zM20 48h4v1h-4zM28 48h5v1h-5zM21 49h3v1h-3zM28 49h4v1h-4zM23 50h1v1h-1zM28 50h2v1h-2z"/><path fill="#FBF6E6" d="M30 31h1v1h-1zM34 31h1v1h-1zM16 32h1v1h-1zM20 32h1v1h-1zM30 32h1v1h-1zM34 32h1v1h-1zM16 33h1v1h-1zM20 33h1v1h-1zM22 43h8v1h-8z"/><g class="face-logo__wink"><path fill="#2D2D39" d="M30 32h5v1h-5zM35 31h1v1h-1z"/><path fill="#C9814A" d="M29 31h1v1h-1z"/><path fill="#F2A562" d="M29 30h7v1h-7zM30 31h5v1h-5z"/></g></svg></a>
+  <nav class="nav__links" aria-label="Main">
+    <a class="nav__link" href="../../#story"><span class="dot"></span>My Story</a>
+    <a class="nav__link" href="../../#work"><span class="dot"></span>Projects</a>
+    <a class="nav__link" href="../../#play"><span class="dot"></span>Experiments</a>
+  </nav>
+  <div class="nav__right">
+    <a href="https://www.linkedin.com/in/subrata-naskar-335993301/" target="_blank" rel="noopener" class="nav__text">Linkedin</a>
+    <a href="https://www.behance.net/subratanaskar3101" target="_blank" rel="noopener" class="nav__text">Behance</a>
+    <a href="../../assets/Subrata-Naskar-Resume.pdf" target="_blank" rel="noopener" class="tag tag--olive">Resume <i class="tag__ic">↗</i></a>
+  </div>
+</header>
+<div class="pj-back"><a class="pj-btn pj-btn--l" href="../../#work" data-home><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Back to Works</a></div>
+
 <main class="doc" id="doc">
 <div class="c0 c1 c2" data-name="Subrata Document">
       <div class="c3 c4 c5 c6 c7" data-name="image 121">
@@ -15321,6 +15349,52 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 </main>
+
+<div class="pj-end">
+  <nav class="pj-pager wrap" aria-label="More projects">
+    <div class="pj-pager__item"><a class="pj-btn pj-btn--l" href="../../#work" data-home><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Previous Project</a><span class="pj-pager__name">Self, Drawn</span></div>
+    <div class="pj-pager__item pj-pager__item--r"><a class="pj-btn pj-btn--r" href="../../#work" data-home>Next Project<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></i></a><span class="pj-pager__name">Chittarupa</span></div>
+  </nav>
+<section class="talk wrap" id="contact">
+    <div class="talk__row">
+      <div class="talk__star" aria-hidden="true">
+        <svg class="star" viewBox="0 0 460 438" width="460" height="438">
+          <path class="star__body" d="M181.812 106.938C200.929 66.0535 259.071 66.0535 278.188 106.938L296.669 146.464C297.308 147.831 298.605 148.774 300.103 148.959L343.404 154.321C388.196 159.868 406.163 215.165 373.187 245.98L341.306 275.771C340.203 276.801 339.709 278.325 339.995 279.807L348.275 322.646C356.841 366.96 309.803 401.135 270.306 379.295L232.122 358.181C230.802 357.451 229.198 357.451 227.878 358.181L189.694 379.295C150.197 401.135 103.159 366.96 111.725 322.646L120.005 279.807C120.291 278.325 119.797 276.801 118.694 275.771L86.8135 245.98C53.8367 215.165 71.8041 159.868 116.596 154.321L161.102 148.81C161.85 148.717 162.498 148.246 162.817 147.563L181.812 106.938Z" fill="#37C5F0" stroke="#FDFADC" stroke-width="3.3"/>
+          <g class="star__eyes" id="starEyes">
+            <path class="star__brow star__brow--l" d="M199 172q20-16 42-8"/>
+            <path class="star__brow star__brow--r" d="M260 164q20-14 40-2"/>
+            <g class="star__eye star__eye--l"><ellipse cx="222.5" cy="219.6" rx="17" ry="28" transform="rotate(-6 222.5 219.6)"/><circle class="star__glint" cx="227" cy="208" r="6"/></g>
+            <g class="star__eye star__eye--r"><ellipse cx="279" cy="213.5" rx="17" ry="28" transform="rotate(-14 279 213.5)"/><circle class="star__glint" cx="284" cy="202" r="6"/></g>
+            <path class="star__wink" d="M296 196l-28 17 28 15"/>
+          </g>
+        </svg>
+      </div>
+      <div class="talk__text">
+        <h2 class="talk__title">Coffee? Chai?<br />Let’s Talk</h2>
+        <p class="talk__p">I’m most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone’s day.</p>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="contact__stripes"></div>
+      <div class="comment">
+        <p class="comment__label">Comment</p>
+        <div class="comment__row"><img class="comment__avatar" src="../../assets/img/comment-avatar.png" alt="" width="40" height="40" /><div><b>Subrata</b><p>Open to freelance work, full-time roles and<br class="comment__br" /> interesting conversations about design &amp; stories.</p></div></div>
+      </div>
+      <a class="contact__btn" href="mailto:sn9830654503@gmail.com"><span class="contact__inner"><i>»</i>Contact<i>«</i></span></a>
+      <i class="ch ch1"></i><i class="ch ch2"></i><i class="ch ch3"></i><i class="ch ch4"></i>
+    </div>
+  </section>
+</div>
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer__word">Subrata Naskar</p>
+    <div class="footer__cols">
+      <ul><li><a href="../../#story">About me</a></li><li><a href="../../#work">Work</a></li><li><a href="#contact">Contact</a></li></ul>
+      <ul><li><a href="https://www.behance.net/subratanaskar3101" target="_blank" rel="noopener">Behance ↗</a></li><li><a href="https://www.linkedin.com/in/subrata-naskar-335993301/" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="../../assets/Subrata-Naskar-Resume.pdf" target="_blank" rel="noopener">Resume ↗</a></li></ul>
+      <p class="footer__note">Made with stories,<br />lines &amp; a curious dog.<br /><span id="year">2026</span> © Subrata Naskar</p>
+    </div>
+  </div>
+</footer>
 <div class="lightbox" id="lb" role="dialog" aria-modal="true" aria-label="Image preview"><img alt="" /></div>
 <script src="doc.js"></script>
 </body>

@@ -134,10 +134,20 @@
 
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   scrollTo(0, 0);
-  if (reduce) {
+  // coming back from a project page ("Back to Works", Previous/Next, nav links): skip the intro, go to the section
+  let skipIntro = false;
+  try { skipIntro = sessionStorage.getItem("subro-skip-intro") === "1"; sessionStorage.removeItem("subro-skip-intro"); } catch (e) {}
+  if (reduce || skipIntro) {
     loader.remove(); hello.remove();
     document.body.classList.remove("is-loading");
     startLanding();
+    if (skipIntro && location.hash) {
+      setTimeout(() => {
+        if (location.hash === "#story") { const b = $("[data-open-story]"); if (b) b.click(); return; }
+        const t = $(location.hash);
+        if (t) scrollTo(0, t.getBoundingClientRect().top + scrollY - 72);
+      }, 120);
+    }
   } else {
     video.addEventListener("timeupdate", () => { if (video.duration) bar.style.width = (video.currentTime / video.duration) * 100 + "%"; });
     video.addEventListener("ended", finishLoader);
@@ -531,7 +541,7 @@
     const steps = $$(".play__s", stage), count = $("#playCount");
     const tools = $$(".tools b", stage);
     tools.forEach((b, i) => { const a = (i / tools.length) * Math.PI * 2 - Math.PI / 2; b.style.setProperty("--tx", Math.cos(a) * 190 + "px"); b.style.setProperty("--ty", Math.sin(a) * 110 + "px"); b.style.transitionDelay = i * 60 + "ms"; });
-    const WORDS = ["Illustration", "Pixel Art", "Motion Design", "Character Design", "UI / UX", "Brand Identity", "Storyboarding", "Typography", "Animation", "Visual Design", "Prototyping", "Photography"];
+    const WORDS = ["Illustration", "Pixel Art", "UI / UX", "Brand Identity", "Storyboarding", "Typography", "Visual Design", "Prototyping", "Photography"];
     const wheel = $("#wheel"), inner = document.createElement("div");
     inner.className = "wheel__in";
     inner.innerHTML = WORDS.map((w) => `<span>${w}</span>`).join("");
