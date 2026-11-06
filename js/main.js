@@ -382,6 +382,7 @@
      7. SELECTED WORK — side-scroll with a walking pixel mascot
      ========================================================= */
   const PROJECTS = [
+    { title: "Form Follows Evidence", year: "2026", desc: "A UX audit and redesign of India’s Case Exhibit Submission Form, the document that travels with physical evidence from crime scene to forensic lab.", tags: ["Usability", "Office Form Redesign", "UI / UX Audit"], img: "assets/img/project-form-follows-evidence.jpg", href: "work/form-follows-evidence/" },
     { title: "Chittarupa", year: "2026", desc: "Chittarupa (চিত্তরূপা, the form of consciousness) is a design interpretation of Durga.", tags: ["Design Project", "Cultural Documentation", "UI / UX"], img: "assets/img/project-chittarupa.jpg" },
     { title: "Afternoon in the Park", year: "2026", desc: "An illustrated loop where the background keeps changing its mind — sky, plaid, checkerboard, memory.", tags: ["Illustration", "Motion"], img: "assets/img/work-02.jpg", video: "assets/video/work-02.mp4" },
     { title: "Scream, Quietly", year: "2026", desc: "A hand-drawn, frame-by-frame study of a face losing its cool — one line, one feeling at a time.", tags: ["Animation", "Hand-drawn"], img: "assets/img/work-01.jpg", video: "assets/video/work-01.mp4" },
@@ -397,7 +398,7 @@
             <div class="card__top"><span class="card__num">${String(i + 1).padStart(2, "0")}</span><span class="card__year">${p.year}</span></div>
             <h3 class="card__title">${p.title}</h3>
             <p class="card__desc">${p.desc}</p>
-            <a class="tag tag--olive tilt-l" href="#">View Project <i class="tag__ic">↗</i></a>
+            <a class="tag tag--olive tilt-l" href="${p.href || "#"}">View Project <i class="tag__ic">↗</i></a>
           </div>
           <div class="card__tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
         </div>

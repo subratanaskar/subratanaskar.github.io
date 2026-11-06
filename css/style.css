@@ -8,6 +8,14 @@
 @font-face { font-family: "Season Sans"; src: url("../assets/fonts/SeasonSans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Season Sans"; src: url("../assets/fonts/SeasonSans-TRIAL-Bold.woff2") format("woff2"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Season Sans"; src: url("../assets/fonts/SeasonSans-TRIAL-Heavy.woff2") format("woff2"); font-weight: 900; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-Light.woff2") format("woff2"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-Regular.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-RegularItalic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-Medium.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-MediumItalic.woff2") format("woff2"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-SemiBold.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-Bold.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Saans"; src: url("../assets/fonts/Saans-TRIAL-Heavy.woff2") format("woff2"); font-weight: 900; font-style: normal; font-display: swap; }
 
 :root {
   --navy: #0f2457;
