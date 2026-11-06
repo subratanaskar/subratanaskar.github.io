@@ -26,24 +26,16 @@ html, body { overflow-x: clip; }
 /* ---- project chrome ---- */
 .pj-back { position: fixed; z-index: 55; top: 88px; left: max(var(--gutter), calc((100% - var(--max)) / 2 + 80px)); }
 .pj-back { transition: opacity .3s, visibility .3s; } .pj-back.away { opacity: 0; visibility: hidden; }
-.pj-btn { display: inline-flex; align-items: center; gap: 12px; padding: 8px 16px 8px 8px; background: var(--olive); color: var(--ink-blue);
-  border: 3px solid #fff; box-shadow: 6px 6px 0 var(--pink); font: 600 18px/1 var(--font); letter-spacing: -.01em; white-space: nowrap;
-  transition: transform .25s var(--ease), box-shadow .25s var(--ease); }
-.pj-btn--r { padding: 8px 8px 8px 16px; }
-.pj-btn i { display: grid; place-items: center; width: 32px; height: 32px; background: var(--cream); }
-.pj-btn svg { width: 22px; height: 22px; fill: none; stroke: var(--ink-blue); stroke-width: 2.6; stroke-linecap: square; }
-.pj-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--pink); }
-.pj-btn--l:hover i svg { transform: translateX(-3px); } .pj-btn--r:hover i svg { transform: translateX(3px); }
-.pj-btn svg { transition: transform .25s var(--ease); }
-.pj-pager { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 96px; padding-bottom: 32px; }
+.pj-btn svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: square; transition: transform .25s var(--ease); }
+.pj-btn:hover .tag__ic svg { transform: translateX(-2px); } .pj-btn--r:hover .tag__ic svg { transform: translateX(2px); }
+.pj-pager { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding-top: 96px; padding-bottom: 24px; }
+.pj-contact { padding-top: 72px; padding-bottom: 120px; }
 .pj-pager__item { display: grid; gap: 14px; }
 .pj-pager__item--r { justify-items: end; text-align: right; }
 .pj-pager__name { font-size: 14px; color: var(--muted); }
 @media (max-width: 860px) {
   .pj-back { position: relative; top: auto; left: auto; padding: 16px var(--gutter); background: #fff; }
   .pj-back.away { opacity: 1; visibility: visible; }
-  .pj-btn { font-size: 14px; gap: 8px; border-width: 2px; box-shadow: 4px 4px 0 var(--pink); }
-  .pj-btn i { width: 24px; height: 24px; } .pj-btn svg { width: 16px; height: 16px; }
   .pj-pager { padding-top: 56px; }
 }
 /* ---- the 1440px Figma canvas, scaled to the viewport ---- */
@@ -2462,7 +2454,7 @@ html, body { overflow-x: clip; }
     <a href="../../assets/Subrata-Naskar-Resume.pdf" target="_blank" rel="noopener" class="tag tag--olive">Resume <i class="tag__ic">↗</i></a>
   </div>
 </header>
-<div class="pj-back"><a class="pj-btn pj-btn--l" href="../../#work" data-home><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Back to Works</a></div>
+<div class="pj-back"><a class="tag tag--olive pj-btn" href="../../#work" data-home><i class="tag__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Back to Works</a></div>
 
 <main class="doc" id="doc">
 <div class="c0 c1 c2" data-name="Subrata Document">
@@ -15352,29 +15344,10 @@ html, body { overflow-x: clip; }
 
 <div class="pj-end">
   <nav class="pj-pager wrap" aria-label="More projects">
-    <div class="pj-pager__item"><a class="pj-btn pj-btn--l" href="../../#work" data-home><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Previous Project</a><span class="pj-pager__name">Self, Drawn</span></div>
-    <div class="pj-pager__item pj-pager__item--r"><a class="pj-btn pj-btn--r" href="../../#work" data-home>Next Project<i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></i></a><span class="pj-pager__name">Chittarupa</span></div>
+    <div class="pj-pager__item"><a class="tag tag--olive pj-btn" href="../../#work" data-home><i class="tag__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 5l-7 7 7 7"/></svg></i>Previous Project</a><span class="pj-pager__name">Self, Drawn</span></div>
+    <div class="pj-pager__item pj-pager__item--r"><a class="tag tag--olive pj-btn pj-btn--r" href="../../#work" data-home>Next Project<i class="tag__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 5l7 7-7 7"/></svg></i></a><span class="pj-pager__name">Chittarupa</span></div>
   </nav>
-<section class="talk wrap" id="contact">
-    <div class="talk__row">
-      <div class="talk__star" aria-hidden="true">
-        <svg class="star" viewBox="0 0 460 438" width="460" height="438">
-          <path class="star__body" d="M181.812 106.938C200.929 66.0535 259.071 66.0535 278.188 106.938L296.669 146.464C297.308 147.831 298.605 148.774 300.103 148.959L343.404 154.321C388.196 159.868 406.163 215.165 373.187 245.98L341.306 275.771C340.203 276.801 339.709 278.325 339.995 279.807L348.275 322.646C356.841 366.96 309.803 401.135 270.306 379.295L232.122 358.181C230.802 357.451 229.198 357.451 227.878 358.181L189.694 379.295C150.197 401.135 103.159 366.96 111.725 322.646L120.005 279.807C120.291 278.325 119.797 276.801 118.694 275.771L86.8135 245.98C53.8367 215.165 71.8041 159.868 116.596 154.321L161.102 148.81C161.85 148.717 162.498 148.246 162.817 147.563L181.812 106.938Z" fill="#37C5F0" stroke="#FDFADC" stroke-width="3.3"/>
-          <g class="star__eyes" id="starEyes">
-            <path class="star__brow star__brow--l" d="M199 172q20-16 42-8"/>
-            <path class="star__brow star__brow--r" d="M260 164q20-14 40-2"/>
-            <g class="star__eye star__eye--l"><ellipse cx="222.5" cy="219.6" rx="17" ry="28" transform="rotate(-6 222.5 219.6)"/><circle class="star__glint" cx="227" cy="208" r="6"/></g>
-            <g class="star__eye star__eye--r"><ellipse cx="279" cy="213.5" rx="17" ry="28" transform="rotate(-14 279 213.5)"/><circle class="star__glint" cx="284" cy="202" r="6"/></g>
-            <path class="star__wink" d="M296 196l-28 17 28 15"/>
-          </g>
-        </svg>
-      </div>
-      <div class="talk__text">
-        <h2 class="talk__title">Coffee? Chai?<br />Let’s Talk</h2>
-        <p class="talk__p">I’m most energized by projects where I can dig into complex problems, collaborate with smart people, and ship things that genuinely improve someone’s day.</p>
-      </div>
-    </div>
-    <div class="contact">
+<section class="pj-contact wrap" id="contact"><div class="contact">
       <div class="contact__stripes"></div>
       <div class="comment">
         <p class="comment__label">Comment</p>
@@ -15382,8 +15355,7 @@ html, body { overflow-x: clip; }
       </div>
       <a class="contact__btn" href="mailto:sn9830654503@gmail.com"><span class="contact__inner"><i>»</i>Contact<i>«</i></span></a>
       <i class="ch ch1"></i><i class="ch ch2"></i><i class="ch ch3"></i><i class="ch ch4"></i>
-    </div>
-  </section>
+    </div></section>
 </div>
 <footer class="footer">
   <div class="wrap">

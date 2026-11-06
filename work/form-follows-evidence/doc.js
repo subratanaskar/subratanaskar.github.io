@@ -7,7 +7,7 @@
   // scale the 1440px Figma canvas to the viewport (never above 1:1)
   const fit = () => {
     const w = document.documentElement.clientWidth;
-    doc.style.setProperty("--z", Math.min(1, w / 1440));
+    doc.style.setProperty("--z", Math.min(1.5, w / 1440));   // grow up to 1.5x so the canvas spans the window
   };
   fit();
   addEventListener("resize", fit);
