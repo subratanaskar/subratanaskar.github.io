@@ -60,7 +60,7 @@
   (function gridSnap() {
     const els = [$(".hero__text"), $(".sw__head > div")].filter(Boolean);
     function snap() {
-      const gx = Math.max(0, (document.documentElement.clientWidth - 1440) / 2);
+      const gx = 0;   // the grid starts at the window's left edge on every screen width
       document.documentElement.style.setProperty("--gx", gx + "px");
       let line = 0;
       els.forEach((el, i) => {

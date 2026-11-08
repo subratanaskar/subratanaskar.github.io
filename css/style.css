@@ -57,12 +57,11 @@ h1, h2, h3, h4, p, figure { margin: 0; }
 /* 120px design grid behind everything (from the Figma frames).
    One grid, anchored to the top-left of the window and fixed, so the nav,
    every section and the My Story panel all share exactly the same lines. */
-body, main, .footer, .grid-bg, .nav, .sw__sky, .story__scroll {
-  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+body, .grid-bg, .nav, .sw__sky, .story__scroll {
+  /* drawn twice: the strength approved on the hero */
+  background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px), linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
   background-size: 120px 120px; background-position: var(--gx, 0px) 0; background-attachment: fixed;
 }
-/* the page shows the grid twice (body + main); the nav's solid fill hides the body's, so draw the nav grid twice */
-.nav { background-image: linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px), linear-gradient(to right, var(--grid) 1px, transparent 1px), linear-gradient(to bottom, var(--grid) 1px, transparent 1px); }
 .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
 
 /* ---------- shared bits ---------- */
