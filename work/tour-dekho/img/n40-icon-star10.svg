@@ -1,0 +1,14 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="5.33333" height="5.33333" viewBox="0 0 5.33333 5.33333" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Icon / star">
+<g id="Vector">
+<use xlink:href="#stroke0_0_8678" fill="#CDE5FA"/>
+<mask id="stroke1_0_8678" fill="white">
+<use xlink:href="#stroke0_0_8678"/>
+</mask>
+<path d="M2.66667 0.666667L3.26667 1.91111L4.62222 2.11111L3.64444 3.06667L3.86667 4.42222L2.66667 3.77778L1.46667 4.42222L1.68889 3.06667L0.711111 2.11111L2.06667 1.91111L2.66667 0.666667Z" stroke-width="0.444444" stroke="#CDE5FA" mask="url(#stroke1_0_8678)"/>
+</g>
+</g>
+<defs>
+<path id="stroke0_0_8678" d="M2.66667 0.666667L3.26667 1.91111L4.62222 2.11111L3.64444 3.06667L3.86667 4.42222L2.66667 3.77778L1.46667 4.42222L1.68889 3.06667L0.711111 2.11111L2.06667 1.91111L2.66667 0.666667Z"/>
+</defs>
+</svg>

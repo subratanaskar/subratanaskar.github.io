@@ -1,0 +1,17 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="8.14136" height="8.14135" viewBox="0 0 8.14136 8.14135" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 2095">
+<path id="Ellipse 68" d="M8.14136 4.07073C8.14136 3.53616 8.03607 3.00682 7.8315 2.51295C7.62693 2.01907 7.32709 1.57032 6.94909 1.19232C6.57109 0.814328 6.12235 0.514484 5.62847 0.309914C5.13459 0.105343 4.60526 5.20246e-05 4.07069 5.2048e-05C3.53612 5.20713e-05 3.00679 0.105343 2.51291 0.309914C2.01903 0.514484 1.57029 0.814328 1.19229 1.19232C0.814293 1.57032 0.514449 2.01907 0.309879 2.51295C0.105308 3.00682 1.72365e-05 3.53616 1.72833e-05 4.07073H1.18996C1.18996 3.69242 1.26447 3.31782 1.40924 2.96832C1.55401 2.61881 1.76621 2.30124 2.03371 2.03374C2.30121 1.76624 2.61878 1.55405 2.96828 1.40928C3.31779 1.26451 3.69239 1.19 4.07069 1.19C4.44899 1.19 4.82359 1.26451 5.1731 1.40928C5.5226 1.55405 5.84017 1.76624 6.10767 2.03374C6.37517 2.30124 6.58737 2.61881 6.73214 2.96832C6.87691 3.31782 6.95142 3.69242 6.95142 4.07073L8.14136 4.07073Z" fill="url(#paint0_linear_0_6114)"/>
+<circle id="Ellipse 65" cx="4.06971" cy="4.06971" r="2.16173" fill="url(#paint1_radial_0_6114)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_6114" x1="4.07069" y1="5.2048e-05" x2="4.07069" y2="8.1414" gradientUnits="userSpaceOnUse">
+<stop stop-color="#519ACB"/>
+<stop offset="1" stop-color="#0B4D8E"/>
+</linearGradient>
+<radialGradient id="paint1_radial_0_6114" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(4.06971 4.06971) rotate(86.722) scale(2.79095)">
+<stop offset="0.234607" stop-color="#0B4D8E"/>
+<stop offset="0.480818" stop-color="#7EBBDE"/>
+<stop offset="0.762378" stop-color="#2089C3"/>
+</radialGradient>
+</defs>
+</svg>
