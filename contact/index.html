@@ -26,14 +26,12 @@
 .ct-form { display: grid; gap: 34px; max-width: 640px; width: 100%; }
 .ct-field { display: grid; gap: 12px; }
 .ct-field label { font-weight: 500; font-size: 17px; color: var(--cream); }
-.ct-field input, .ct-field textarea { width: 100%; padding: 16px 18px; background: rgba(253,250,220,.03); border: 1px solid var(--line); border-radius: 4px; color: var(--cream);
+.ct-field input, .ct-field textarea { width: 100%; padding: 16px 18px; background: rgba(253,250,220,.03); border: 1px solid var(--line); border-radius: 0; color: var(--cream);
   font: inherit; font-size: 18px; line-height: 1.4; outline: none; transition: border-color .2s, background .2s, box-shadow .2s; }
 .ct-field textarea { min-height: 180px; resize: vertical; }
 .ct-field input::placeholder, .ct-field textarea::placeholder { color: rgba(253,250,220,.4); }
 .ct-field input:focus, .ct-field textarea:focus { border-color: var(--olive); background: rgba(253,250,220,.06); box-shadow: 3px 3px 0 var(--pink); }
-.ct-submit { justify-self: start; min-width: 150px; padding: 14px 34px; border: 1.5px solid var(--cream); border-radius: 4px; background: none; color: var(--cream);
-  font: inherit; font-weight: 600; font-size: 18px; cursor: pointer; transition: background .2s, color .2s, box-shadow .25s var(--ease), transform .25s var(--ease); }
-.ct-submit:hover, .ct-submit:focus-visible { background: var(--olive); border-color: var(--olive); color: var(--ink-blue); box-shadow: 4px 4px 0 var(--pink); transform: translate(-2px, -2px); }
+.ct-submit { justify-self: start; font-family: inherit; cursor: pointer; }
 .ct-note { min-height: 1.4em; font-size: 15px; color: var(--olive); }
 @media (max-width: 860px) {
   .ct { padding-top: 110px; padding-bottom: 90px; }
@@ -70,7 +68,7 @@
       <div class="ct-field"><label for="ctName">Name *</label><input id="ctName" name="name" type="text" placeholder="Your Name..." autocomplete="name" required /></div>
       <div class="ct-field"><label for="ctEmail">Email Address *</label><input id="ctEmail" name="email" type="email" placeholder="Your Email Address..." autocomplete="email" required /></div>
       <div class="ct-field"><label for="ctMsg">Message *</label><textarea id="ctMsg" name="message" placeholder="Your Message..." required></textarea></div>
-      <button class="ct-submit" type="submit">Submit</button>
+      <button class="tag tag--olive ct-submit" type="submit">Submit <i class="tag__ic">↗</i></button>
       <p class="ct-note" id="ctNote" role="status" aria-live="polite"></p>
     </form>
   </div>
