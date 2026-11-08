@@ -30,7 +30,7 @@
   --muted: #a6a492;
   --dim: #5c5c5c;
   --line: rgba(229, 229, 229, .6);
-  --grid: rgba(253, 250, 220, .06);
+  --grid: rgba(253, 250, 220, .025);
   --font: "Season Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --gutter: clamp(16px, 5.6vw, 80px);
   --max: 1440px;
