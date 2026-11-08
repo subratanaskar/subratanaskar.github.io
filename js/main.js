@@ -398,7 +398,6 @@
     { title: "Behind the Plate", year: "2026", desc: "A tangible data visualisation that serves 12 everyday foods as kebab skewers on a live grill. Each block is a stage of the supply chain, and the smoke is the greenhouse gas we never see.", tags: ["Product Design", "Exhibition Design", "Data Visualisation"], img: "assets/img/project-behind-the-plate.jpg", href: "work/tangible-data-viz/" },
     { title: "Afternoon in the Park", year: "2026", desc: "An illustrated loop where the background keeps changing its mind — sky, plaid, checkerboard, memory.", tags: ["Illustration", "Motion"], img: "assets/img/work-02.jpg", video: "assets/video/work-02.mp4" },
     { title: "Scream, Quietly", year: "2026", desc: "A hand-drawn, frame-by-frame study of a face losing its cool — one line, one feeling at a time.", tags: ["Animation", "Hand-drawn"], img: "assets/img/work-01.jpg", video: "assets/video/work-01.mp4" },
-    { title: "Self, Drawn", year: "2026", desc: "An animated self-introduction: a designer drawing the character who draws him back.", tags: ["Self-portrait", "Animation"], img: "assets/img/work-04.jpg", video: "assets/video/work-04.mp4" },
   ];
   (function selectedWork() {
     const sec = $("#work"), track = $("#swTrack"), mascot = $("#swMascot"), cityEl = $("#swCity"), ground = $("#swGround"), prog = $("#swProgress");
