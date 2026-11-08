@@ -414,10 +414,10 @@
           </div>
           <div class="card__tags">${p.tags.map((t) => `<span>${t}</span>`).join("")}</div>
         </div>
-        <div class="card__media">
+        <a class="card__media" href="${p.href || "#"}" aria-label="View ${p.title}">
           ${p.video ? `<video data-src="${p.video}" poster="${p.img}" muted loop playsinline preload="none"></video>` : `<img src="${p.img}" alt="${p.title}" loading="lazy" />`}
           <i class="h h1"></i><i class="h h2"></i><i class="h h3"></i><i class="h h4"></i>
-        </div>
+        </a>
       </article>`).join("");
     $$("video", track).forEach(watchMedia);
     const cards = $$(".card", track);
