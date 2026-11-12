@@ -127,9 +127,9 @@
     if (started) return;
     started = true;
     store.set("subro-seen", "1");
-    loader.classList.add("done");
-    setTimeout(() => loader.remove(), 700);
-    runHello();
+    bar.style.width = "100%";
+    runHello();                                          // Hello slides up from the bottom while the face rewinds
+    setTimeout(() => loader.remove(), 1300);             // the loader goes once Hello covers it
   }
 
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -149,14 +149,26 @@
       }, 120);
     }
   } else {
-    video.addEventListener("timeupdate", () => { if (video.duration) bar.style.width = (video.currentTime / video.duration) * 100 + "%"; });
+    // the clip plays forward, then rewinds (52 + 51 frames); at the turn the Hello screen rises
+    const TURN = 52 / 103;
+    video.addEventListener("timeupdate", () => {
+      if (!video.duration || started) return;
+      const p = video.currentTime / (video.duration * TURN);
+      bar.style.width = Math.min(1, p) * 100 + "%";
+      if (p >= 1) finishLoader();
+    });
     video.addEventListener("ended", finishLoader);
     video.addEventListener("error", finishLoader);
     loader.addEventListener("click", finishLoader);
     addEventListener("keydown", (e) => { if (e.key === "Escape" && !started) finishLoader(); });
-    if (innerHeight > innerWidth) { video.src = "assets/video/subro-face-portrait.mp4"; video.load(); }
-    // play the intro face clip 0.5s longer than its natural length
-    const slow = () => { if (video.duration) { video.defaultPlaybackRate = video.playbackRate = video.duration / (video.duration + 0.5); } };
+    {
+      const base = "assets/video/subro-face" + (innerHeight > innerWidth ? "-portrait" : "") + "-navy";
+      const mp4 = video.canPlayType('video/mp4; codecs="avc1.42E01E"');
+      const src = base + (mp4 ? ".mp4" : ".webm");
+      if (!video.currentSrc.endsWith(src)) { video.src = src; video.load(); }
+    }
+    // the forward half plays 0.5s longer than its natural length (same pace as before)
+    const slow = () => { if (video.duration) { const fwd = video.duration * 52 / 103; video.defaultPlaybackRate = video.playbackRate = fwd / (fwd + 0.5); } };
     if (video.readyState >= 1) slow(); else video.addEventListener("loadedmetadata", slow);
     const pr = video.play();
     if (pr && pr.catch) pr.catch(() => setTimeout(finishLoader, 600));
