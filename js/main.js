@@ -164,7 +164,7 @@
     {
       const base = "assets/video/subro-face" + (innerHeight > innerWidth ? "-portrait" : "") + "-navy";
       const mp4 = video.canPlayType('video/mp4; codecs="avc1.42E01E"');
-      const src = base + (mp4 ? ".mp4" : ".webm");
+      const src = base + (mp4 ? ".mp4" : ".webm") + "?v=20261113";
       if (!video.currentSrc.endsWith(src)) { video.src = src; video.load(); }
     }
     // the forward half plays 0.5s longer than its natural length (same pace as before)
@@ -289,7 +289,7 @@
     let LP = 3, lmk = [];                                        // landmark rects in css px
     function placeLandmarks() {
       lmk = [];
-      LP = W < 700 ? 1 : W < 1100 ? 2 : 3;
+      LP = W < 700 ? 1 : W < 1100 ? 2 : Math.max(3, Math.round(3 * W / 1440));   // 4x on ~1920 screens
       if (LM.vm) { const w = LM.vm.width * LP, h = LM.vm.height * LP; lmk.push({ im: LM.vm, x: Math.round(W * 0.2 - w / 2), y: road - h, w, h, kind: "vm" }); }
       if (LM.br) { const w = LM.br.width * LP, h = LM.br.height * LP; lmk.push({ im: LM.br, x: Math.round(Math.min(W * 0.52, W - w - 24)), y: road - h, w, h, kind: "br" }); }
     }
@@ -325,7 +325,7 @@
       const r = cv.getBoundingClientRect(), dpr = DPR();
       W = r.width; H = r.height; road = Math.round(H * 0.78);
       S = clamp(Math.floor(road / 72), 3, 5);
-      taxiW = clamp(W * 0.3, 250, 400); k = taxiW / TW; taxiH = TH * k;
+      taxiW = clamp(W * 0.3, 250, 400 * Math.max(1, W / 1440)); k = taxiW / TW; taxiH = TH * k;   // grows past 400 on screens wider than 1440
       cell = Math.max(1.5, Math.round(k * 3.0 * 2) / 2);   // one sprite pixel, in CSS px
       cv.width = W * dpr; cv.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -485,6 +485,10 @@
     }
     const swHead = $(".sw__head", sec);
     function layout() {
+      // wide screens: skyline + road tiles grow with the page (960x220 / 64x96 at 1440)
+      const sc = Math.max(1, document.documentElement.clientWidth / 1440);
+      cityEl.style.backgroundSize = `${960 * sc}px ${220 * sc}px`;
+      ground.style.backgroundSize = `${64 * sc}px ${96 * sc}px`;
       sec.style.height = "auto";
       const stk = $(".sw__sticky", sec);
       maxShift = Math.max(0, track.scrollWidth - (stk ? stk.clientWidth : innerWidth));

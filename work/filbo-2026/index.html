@@ -2986,6 +2986,18 @@ html, body { overflow-x: clip; }
 /* Fig. 05 zone renders grid (5 x 4, as in Figma) */
 .doc .fig05-grid { display: grid; width: 666.44px; height: 325.41px; grid-template-columns: repeat(5, 120.49px); grid-template-rows: 80.32px 80.32px 58.38px 58.38px; justify-content: space-between; align-content: space-between; }
 .doc .fig05-grid img { width: 100%; height: 100%; max-width: none; object-fit: cover; display: block; }
+
+/* Fig. 07 — two rows of zone panels, exported 2x from Figma */
+.doc .fig07-rows { display: flex; flex-direction: column; gap: 80px; width: 1200px; }
+.doc .fig07-rows img { display: block; width: 1200px; height: 400px; max-width: none; }
+/* Every zone, every path — one kiosk frame running the interaction recording */
+.doc .ez-block { display: flex; flex-direction: column; align-items: center; gap: 32px; width: 1200px; }
+.doc .ez-head { display: flex; flex-direction: column; align-items: center; gap: 16px; width: 560px; text-align: center; }
+.doc .ez-title { margin: 0; font-family: "Funnel Display", sans-serif; font-weight: 600; font-size: 28px; line-height: 1.2; letter-spacing: -0.005em; color: #8f372c; }
+.doc .ez-lede { margin: 0; font-family: "Funnel Sans", sans-serif; font-weight: 400; font-size: 18px; line-height: 1.4; letter-spacing: -0.01em; color: #6e5a52; }
+.doc .ez-bezel { width: 635px; height: 364px; padding: 8px; border-radius: 20px; background: #1e1412; box-sizing: border-box; }
+.doc .ez-screen { display: block; width: 619px; height: 348px; max-width: none; border-radius: 13px; object-fit: cover; background: #ebd9c7; }
+.doc { height: 40783px !important; }
 </style>
 </head>
 <body class="pj">
@@ -3007,7 +3019,7 @@ html, body { overflow-x: clip; }
 
 <main class="doc" id="doc">
 <div class="c0 c1 c2 c3 c4" data-name="Case Study — FILBo 2026">
-<div class="c5 c6 c7 c3 c8 c1"><div class="c0 c9 ca cb cc cd ce cf c10 c2 c11" data-name="01 Hero">
+<div class="c5 c6 c7 c3 c8 c1" style="top:2059px;height:679px"><div class="c0 c9 ca cb cc cd ce cf c10 c2 c11" data-name="01 Hero">
       <div class="c12 c9 ca cb c13 c14 c15 cd c16 c2 c17 c18 c19">
         <div class="c9 ca cb c1a cd c2 c17 c19">
           <p class="c2 c17 c1b c1c c19">Read &amp; Explore India</p>
@@ -3095,7 +3107,7 @@ html, body { overflow-x: clip; }
 <div class="c5 c5e c5f c60 c61"><div class="c2 c11" data-name="Union">
       <img alt="" class="c5 c3c c34 c38 c11" src="img/n1-union.svg" loading="lazy" decoding="async">
     </div></div>
-<div class="c5 c6 c62 c3 c63 c1"><div class="c64 c9 ca cb cc c2f ce cf c10 c2 c11" data-name="02 Hero Visual">
+<div class="c5 c6 c62 c3 c63 c1" style="top:6192px;height:1038px"><div class="c64 c9 ca cb cc c2f ce cf c10 c2 c11" data-name="02 Hero Visual">
       <div class="c9 ca cb c65 c2f c2 c17">
         <div class="c66 c9 ca cb cd c1 c67 c2 c68 c69 c17" data-name="Kiosk 43in — bezel">
           <div class="c6a c2 c6b c17 c6c" data-name="img/hero_kiosk">
@@ -3113,7 +3125,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c7f c3 c80 c1"><div class="c0 c9 ca cb c81 cd c82 c83 c10 c2 c11" data-name="03 Overview">
+<div class="c5 c6 c7f c3 c80 c1" style="top:2753px;height:1863px"><div class="c0 c9 ca cb c81 cd c82 c83 c10 c2 c11" data-name="03 Overview">
       <div class="c5 ca c2f c30 c84 c85 c86">
         <div class="c87 c88">
           <div class="c2 c89">
@@ -3254,7 +3266,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 cba c3 cbb c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 01 — The context">
+<div class="c5 c6 cba c3 cbb c1" style="top:4616px;height:1576px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 01 — The context">
       <div class="c5 cbd cbe cbf cc0 cc1">
         <img alt="" class="c5 c3c c34 c38 c11" src="img/n4-frame75.svg" loading="lazy" decoding="async">
       </div>
@@ -3344,7 +3356,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 cdb c3 cdc c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 02 — The space">
+<div class="c5 c6 cdb c3 cdc c1" style="top:7230px;height:3472px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 02 — The space">
       <div class="c5 cdd cde c89 cdf">
         <div class="c5 ce0" data-name="Group">
           <img alt="" class="c5 c3c c34 c38 c11" src="img/n5-group.svg" loading="lazy" decoding="async">
@@ -3603,7 +3615,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 cec c3 ced c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 03 — The problem">
+<div class="c5 c6 cec c3 ced c1" style="top:10702px;height:2012px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 03 — The problem">
       <div class="c5 cee cef cf0">
         <img alt="" class="c5 c3c c34 c38 c11" src="img/n6-frame280.svg" loading="lazy" decoding="async">
       </div>
@@ -3758,7 +3770,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 cf9 c3 cfa c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 04 — Information architecture">
+<div class="c5 c6 cf9 c3 cfa c1" style="top:12714px;height:3237px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 04 — Information architecture">
       <div class="c5 cfb cef cfc">
         <div class="c5 cfd">
           <img alt="" class="c3c c38 c11" src="img/n7-frame79.svg" loading="lazy" decoding="async">
@@ -4501,7 +4513,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c14e c3 c14f c1"><div class="c0 c9 ca cb c150 cd cbc c2 c11" data-name="Ch 05 — The system">
+<div class="c5 c6 c14e c3 c14f c1" style="top:15951px;height:3529px"><div class="c0 c9 ca cb c150 cd cbc c2 c11" data-name="Ch 05 — The system">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c2a c2b c28">
@@ -4522,1150 +4534,9 @@ html, body { overflow-x: clip; }
         </div>
       </div>
       <div class="c9 ca cb cc8 cd c1 c2 c17 c19" data-name="Figure sys_motifs">
-        <div class="c9 ca cb c151 cd c2 c17 c152">
-          <div class="c9 ca c2f c1f c2 c17 c19">
-            <div class="c153 c2 c17 c154">
-              <div class="c5 c155" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c156" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector1.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c158" data-name="Group">
-                <div class="c5 c157 c159" data-name="Group">
-                  <div class="c5 c15a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c15b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group1.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c15c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group2.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c15d" data-name="Group">
-                  <div class="c5 c15e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group3.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c15f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group4.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c160" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group5.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c161" data-name="Group">
-                  <div class="c5 c162" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group6.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c163" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group7.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c164" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group8.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c165" data-name="Group">
-                  <div class="c5 c166" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group9.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c167" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group10.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c168" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group11.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c169" data-name="Group">
-                  <div class="c5 c16a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group12.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c16b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group13.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c16c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group14.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c16d" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group15.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c16e" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group16.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c16f" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group17.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c170" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group18.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c171">
-              <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-frame79033.svg" loading="lazy" decoding="async">
-            </div>
-            <div class="c153 c2 c17 c171">
-              <div class="c5 c172" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector2.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c173" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector3.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c174" data-name="Group">
-                <div class="c5 c157 c175" data-name="Group">
-                  <div class="c5 c176" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group19.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c177" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group20.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c178" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group21.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c179" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group22.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c17a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group23.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c17b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group24.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c17c" data-name="Group">
-                  <div class="c5 c17d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group25.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c17e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group26.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c17f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group27.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c180" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group28.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c181" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group29.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c182" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group30.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c183" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group31.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c184" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group32.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c185" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group33.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c186" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group34.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c187">
-              <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-frame79035.svg" loading="lazy" decoding="async">
-            </div>
-            <div class="c153 c2 c17 c171">
-              <div class="c5 c172" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector4.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c173" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector5.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c188" data-name="Group">
-                <div class="c5 c189" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group35.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18a" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group36.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18b" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group37.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18c" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group38.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18d" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group39.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18e" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group40.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c18f" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group41.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c190" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group42.svg" loading="lazy" decoding="async">
-                </div>
-              </div>
-              <div class="c5 c191" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group43.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c192" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group44.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c193" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group45.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c194" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group46.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c195">
-              <div class="c5 c172" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector6.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c173" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector7.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c196" data-name="Group">
-                <div class="c5 c157 c197" data-name="Group">
-                  <div class="c5 c198" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group47.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c199" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group48.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c19a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group49.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c19b" data-name="Group">
-                  <div class="c5 c19c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group50.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c19d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group51.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c19e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group52.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c19f" data-name="Group">
-                  <div class="c5 c1a0" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group53.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1a1" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group54.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1a2" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group55.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1a3" data-name="Group">
-                  <div class="c5 c1a4" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group56.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1a5" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group57.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1a6" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group58.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1a7" data-name="Group">
-                  <div class="c5 c1a8" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group59.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1a9" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group60.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1aa" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group61.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c157 c1ab" data-name="Group">
-                <div class="c5 c157 c1ab" data-name="rt2cYj.tif">
-                  <div class="c5 c1ab" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group62.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c1ac" data-name="Vector">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector8.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c157 c1ab" data-name="rt2cYj.tif">
-                  <div class="c5 c1ab" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group62.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c1ad" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group63.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c1ae" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group64.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c1af" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group65.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-          </div>
-          <div class="c9 ca c2f c1f c2 c17 c19">
-            <div class="c153 c2 c17 c171">
-              <div class="c5 c172" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector9.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c173" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector10.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c1b0" data-name="Group">
-                <div class="c5 c157 c1b1" data-name="Group">
-                  <div class="c5 c1b2" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group66.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1b3" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group67.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1b4" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group68.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1b5" data-name="Group">
-                  <div class="c5 c1b6" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group69.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1b7" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group70.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1b8" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group69.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1b9" data-name="Group">
-                  <div class="c5 c1ba" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group71.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1bb" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group72.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1bc" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group73.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1bd" data-name="Group">
-                  <div class="c5 c1be" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group74.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1bf" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group75.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1c0" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group76.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1c1" data-name="Group">
-                  <div class="c5 c1c2" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group77.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1c3" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group78.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1c4" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group79.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1c5" data-name="Group">
-                  <div class="c5 c1c6" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group80.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1c7" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group81.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1c8" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group82.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1c9" data-name="Group">
-                  <div class="c5 c1ca" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group83.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1cb" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group84.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1cc" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group85.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1cd" data-name="Group">
-                  <div class="c5 c1ce" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group86.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1cf" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group87.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1d0" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group88.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1d1" data-name="Group">
-                  <div class="c5 c1d2" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group89.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1d3" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group90.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1d4" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group91.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1d5" data-name="Group">
-                  <div class="c5 c1d6" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group92.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1d7" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group93.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1d8" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group94.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1d9" data-name="Group">
-                  <div class="c5 c1da" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group95.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1db" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group96.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1dc" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group97.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1dd" data-name="Group">
-                  <div class="c5 c1de" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group98.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1df" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group99.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1e0" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group98.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1e1" data-name="Group">
-                  <div class="c5 c1e2" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group100.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1e3" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group101.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1e4" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group102.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c1e5" data-name="Group">
-                  <div class="c5 c1e6" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group103.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1e7" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group104.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c1e8" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group105.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c1e9" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group106.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c1ea" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group107.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c1eb" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group108.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c1ec" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group109.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c195">
-              <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-frame79040.svg" loading="lazy" decoding="async">
-            </div>
-            <div class="c153 c2 c17 c1ed">
-              <div class="c5 c157 c1ee" data-name="Base colors">
-                <div class="c5 c1ee" data-name="Vector">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector11.svg" loading="lazy" decoding="async">
-                </div>
-                <div class="c5 c157 c1ef" data-name="Group">
-                  <div class="c5 c157 c1f0" data-name="Group">
-                    <div class="c5 c1f1" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group110.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1f2" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group111.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1f3" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group112.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c1f4" data-name="Group">
-                    <div class="c5 c1f5" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group113.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1f6" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group114.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1f7" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group115.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c1f8" data-name="Group">
-                    <div class="c5 c1f9" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group116.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1fa" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group117.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1fb" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group118.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c1fc" data-name="Group">
-                    <div class="c5 c1fd" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group119.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1fe" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group120.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c1ff" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group121.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c200" data-name="Group">
-                    <div class="c5 c201" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group122.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c202" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group123.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c203" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group124.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c204" data-name="Color overlay">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-color-overlay.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c205" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group125.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c206" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group126.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c207" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group127.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c208">
-              <div class="c5 c209" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector12.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c20a" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector13.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c20b" data-name="Group">
-                <div class="c5 c157 c20c" data-name="Group">
-                  <div class="c5 c20d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group128.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c20e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group129.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c20f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group130.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c210" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group131.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c211" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group132.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c212" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group133.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c213" data-name="Group">
-                  <div class="c5 c214" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group134.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c215" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group135.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c216" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group136.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c217" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group137.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c218" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group138.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c219" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group139.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c21a" data-name="Group">
-                  <div class="c5 c21b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group140.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group141.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group142.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group143.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group144.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c220" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group145.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c221" data-name="Group">
-                  <div class="c5 c222" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group146.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c223" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group147.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c224" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group148.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c225" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group149.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c226" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group150.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c227" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group151.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c228" data-name="Group">
-                  <div class="c5 c229" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group152.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group153.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group154.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group155.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group156.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group157.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c22f" data-name="Group">
-                  <div class="c5 c230" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group158.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c231" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group159.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c232" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group160.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c233" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group161.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c234" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group162.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c235" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group163.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c236" data-name="Group">
-                  <div class="c5 c237" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group164.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c238" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group165.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c239" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group166.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group167.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group168.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group169.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c23d" data-name="Group">
-                  <div class="c5 c23e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group170.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group171.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c240" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group172.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c241" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group173.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c242" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group174.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c243" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group175.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c244" data-name="Group">
-                  <div class="c5 c245" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group176.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c246" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group177.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c247" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group178.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c248" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group179.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c249" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group180.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c24a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group181.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c24b" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group182.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c24c" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group183.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c208">
-              <div class="c5 c24d" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector14.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c20a" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector15.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c20b" data-name="Group">
-                <div class="c5 c157 c20c" data-name="Group">
-                  <div class="c5 c20d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group184.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c20e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group185.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c20f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group186.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c210" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group187.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c211" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group188.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c212" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group189.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c213" data-name="Group">
-                  <div class="c5 c214" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group190.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c215" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group137.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c216" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group191.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c217" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group192.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c218" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group193.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c219" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group194.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c21a" data-name="Group">
-                  <div class="c5 c21b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group195.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group196.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group197.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group198.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c21f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group199.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c220" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group200.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c221" data-name="Group">
-                  <div class="c5 c222" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group201.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c223" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group202.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c224" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group203.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c225" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group204.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c226" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group205.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c227" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group206.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c228" data-name="Group">
-                  <div class="c5 c229" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group207.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group155.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group208.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group209.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22d" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group210.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c22e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group211.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c22f" data-name="Group">
-                  <div class="c5 c230" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group212.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c231" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group213.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c232" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group214.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c233" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group215.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c234" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group216.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c235" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group217.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c236" data-name="Group">
-                  <div class="c5 c237" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group218.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c238" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group219.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c239" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group220.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group221.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23b" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group222.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23c" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group223.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c23d" data-name="Group">
-                  <div class="c5 c23e" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group224.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c23f" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group173.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c240" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group225.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c241" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group226.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c242" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group227.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c243" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group228.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-                <div class="c5 c157 c244" data-name="Group">
-                  <div class="c5 c245" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group229.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c246" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group230.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c247" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group231.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c248" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group232.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c249" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group233.svg" loading="lazy" decoding="async">
-                  </div>
-                  <div class="c5 c24a" data-name="Group">
-                    <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group234.svg" loading="lazy" decoding="async">
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c24e" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group235.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c24f" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group236.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c250" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector16.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c251" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector17.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c252" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector18.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c253" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector19.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-            <div class="c153 c2 c17 c171">
-              <div class="c5 c172" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector20.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c254" data-name="Vector">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-vector21.svg" loading="lazy" decoding="async">
-              </div>
-              <div class="c5 c157 c255" data-name="Patterns">
-                <div class="c5 c157 c255" data-name="Group">
-                  <div class="c5 c157 c256" data-name="Group">
-                    <div class="c5 c257" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group237.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c258" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group238.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c259" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group239.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c25a" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group240.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c25b" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group241.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c25c" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group242.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c25d" data-name="Group">
-                    <div class="c5 c25e" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group243.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c25f" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group244.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c260" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group245.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c261" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group246.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c262" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group247.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c263" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group248.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c264" data-name="Group">
-                    <div class="c5 c265" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group249.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c266" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group250.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c267" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group251.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c268" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group252.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c269" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group253.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c26a" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group254.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c26b" data-name="Group">
-                    <div class="c5 c26c" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group255.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c26d" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group256.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c26e" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group257.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c26f" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group258.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c270" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group259.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c271" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group260.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c272" data-name="Group">
-                    <div class="c5 c273" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group261.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c274" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group262.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c275" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group263.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c276" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group264.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c277" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group265.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c278" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group266.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c279" data-name="Group">
-                    <div class="c5 c27a" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group267.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c27b" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group268.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c27c" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group269.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c27d" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group270.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c27e" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group271.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c27f" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group272.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c280" data-name="Group">
-                    <div class="c5 c281" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group273.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c282" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group274.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c283" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group275.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c284" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group276.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c285" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group277.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c286" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group278.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c287" data-name="Group">
-                    <div class="c5 c288" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group279.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c289" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group280.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c28a" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group281.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c28b" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group282.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c28c" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group283.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c28d" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group284.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                  <div class="c5 c157 c28e" data-name="Group">
-                    <div class="c5 c28f" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group285.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c290" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group286.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c291" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group287.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c292" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group288.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c293" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group289.svg" loading="lazy" decoding="async">
-                    </div>
-                    <div class="c5 c294" data-name="Group">
-                      <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group290.svg" loading="lazy" decoding="async">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="c5 c157 c295" data-name="Symbol">
-                <div class="c5 c295" data-name="Group">
-                  <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group291.svg" loading="lazy" decoding="async">
-                </div>
-              </div>
-              <div class="c5 c296" data-name="Group">
-                <img alt="" class="c5 c3c c34 c38 c11" src="img/n8-group292.svg" loading="lazy" decoding="async">
-              </div>
-            </div>
-          </div>
+        <div class="fig07-rows" data-name="Frame 79083">
+          <img alt="Zone motifs and icons with trilingual titles: Welcome, Exhibition, Kids Zone, Publishers, Bookstore, Stage" src="img/n8-motifs-row1.webp" loading="lazy" decoding="async">
+          <img alt="Zone motifs and icons with trilingual titles: Restaurant, Office, Thank you, and the Collective Exhibit of Books from India in Spanish, English and Hindi" src="img/n8-motifs-row2.webp" loading="lazy" decoding="async">
         </div>
         <div class="c12 c9 ca ccc cd c2 c17 c19" data-name="n8_Caption">
       <p class="c13 c14 c29 c2 c17 c2a c2d cb0 c28">
@@ -5957,7 +4828,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c2b6 c3 c2b7 c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 06 — Sketches">
+<div class="c5 c6 c2b6 c3 c2b7 c1" style="top:24219px;height:1355px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 06 — Sketches">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c2a c2b c28">
@@ -7126,7 +5997,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c46c c3 c46d c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 07 — Iterations">
+<div class="c5 c6 c46c c3 c46d c1" style="top:25574px;height:3484px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 07 — Iterations">
       <div class="c5 c46e cef c46f">
         <img alt="" class="c5 c3c c34 c38 c11" src="img/n10-frame85.svg" loading="lazy" decoding="async">
       </div>
@@ -9014,7 +7885,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c6f7 c3 c6f8 c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 08 — The kiosk">
+<div class="c5 c6 c6f7 c3 c6f8 c1" style="top:29058px;height:3626px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 08 — The kiosk">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c2a c2b c28">
@@ -11333,89 +10204,13 @@ html, body { overflow-x: clip; }
           </div>
         </div>
       </div>
-      <div class="c9 ca cb cb2 cd c2 c17 c19">
-        <p class="c12 c13 c14 c29 c2 c17 c2a c2d cb0 c28">
-          Every zone, every path
-        </p>
-        <div class="c9 ca cb cb2 cd c1 c2 c17 c19" data-name="Zone states grid">
-          <div class="c9 ca cb2 cd c1 c2 c17 c19" data-name="Row 1">
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Exhibition">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_exhibition">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-exhibition.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Exhibition
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Collective Exhibit">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_collective">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-collective.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Collective Exhibit
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Kids Zone">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_kids">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-kids.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Kids Zone
-              </p>
-            </div>
-          </div>
-          <div class="c9 ca cb2 cd c1 c2 c17 c19" data-name="Row 2">
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Publishers">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_publishers">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-publishers.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Publishers
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Stage">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_stage">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-stage.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Stage
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Restaurant">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_restaurant">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-restaurant.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Restaurant
-              </p>
-            </div>
-          </div>
-          <div class="c9 ca cb2 cd c1 c2 c17 c19" data-name="Row 3">
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Office">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_office">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-office.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Office
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Exit Lobby">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_exit">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-exit.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Exit Lobby
-              </p>
-            </div>
-            <div class="c9 ca c8f cb caf cd c91 c1 c2" data-name="Restroom">
-              <div class="c6f6 c2 c86b c17 c19" data-name="img/g_restroom">
-                <img alt="" class="c5 c34 c38 c6d c36 c86b c11" src="img/n11-img-g-restroom.webp" loading="lazy" decoding="async">
-              </div>
-              <p class="c12 c20 c21 c6e c2 c17 c23 c70 c28">
-                Restroom
-              </p>
-            </div>
-          </div>
+      <div class="ez-block" data-name="Frame 79075">
+        <div class="ez-head">
+          <p class="ez-title">Every zone, every path</p>
+          <p class="ez-lede">On the map, each zone keeps its own path and direction to reach your destination. That lets a visitor match what they see on screen to navigate within the exhibition pavilion.</p>
+        </div>
+        <div class="ez-bezel" data-name="Kiosk bezel">
+          <img class="ez-screen" src="img/n11-every-zone.gif" alt="Recording of the kiosk: a visitor taps Kids Zone, Publishers, Stage, Bookstore, Restaurant, Exhibition, Office and Restroom, and animated footsteps draw each route from You are here." loading="lazy" decoding="async">
         </div>
       </div>
       <div class="c12 c9 ca cb2 cd c1 c2 c17 c19" data-name="Details">
@@ -11453,7 +10248,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c86c c3 c86d c1"><div class="c66 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 09 — The build">
+<div class="c5 c6 c86c c3 c86d c1" style="top:32684px;height:2210px"><div class="c66 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 09 — The build">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c103 c2b c28">
@@ -11659,7 +10454,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c874 c3 c875 c1"><div class="c0 c9 ca cb c81 c2f c30 cbc c2 c11" data-name="Ch 10 — In the wild">
+<div class="c5 c6 c874 c3 c875 c1" style="top:34894px;height:3583px"><div class="c0 c9 ca cb c81 c2f c30 cbc c2 c11" data-name="Ch 10 — In the wild">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c2a c2b c28">
@@ -11833,7 +10628,7 @@ html, body { overflow-x: clip; }
         <img alt="" class="c5 c3c c34 c38 c11" src="img/n13-frame78.svg" loading="lazy" decoding="async">
       </div>
     </div></div>
-<div class="c5 c6 c87f c3 c880 c1"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 11 — Reflections">
+<div class="c5 c6 c87f c3 c880 c1" style="top:38477px;height:1172px"><div class="c0 c9 ca cb c81 cd cbc c2 c11" data-name="Ch 11 — Reflections">
       <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
         <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">
           <p class="c12 c13 c14 c29 c2 c17 c2a c2b c28">
@@ -11944,7 +10739,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div></div>
-<div class="c5 c6 c882 c3 c883 c1"><div class="cb3 c9 ca cb cc cd c10 c884 c2 c11" data-name="Credits">
+<div class="c5 c6 c882 c3 c883 c1" style="top:39649px;height:705px"><div class="cb3 c9 ca cb cc cd c10 c884 c2 c11" data-name="Credits">
       <p class="c12 c13 c14 c29 c2 c17 c2a c2d cb0 c28">
         Credits
       </p>
@@ -12031,7 +10826,7 @@ html, body { overflow-x: clip; }
         </div>
       </div>
     </div>
-<div class="c5 c6 c8bc c3 c8bd c1"><div class="c9 ca c2f c30 cbc c2 c11">
+<div class="c5 c6 c8bc c3 c8bd c1" style="top:19480px;height:4739px"><div class="c9 ca c2f c30 cbc c2 c11">
       <div class="c9 ca cb c150 cd c2 c17 c152">
         <div class="c9 ca cb cc cd c2 c17 c19" data-name="Chapter Header">
           <div class="c9 ca cc2 c2f c1 c2 c17 c19" data-name="Top">

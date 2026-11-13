@@ -3,12 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- wide screens: --s = viewport width / 1440 (min 1); css/style.css scales the layout by it -->
+<script>(function(){var r=document.documentElement;function s(){r.style.setProperty("--s",Math.max(1,r.clientWidth/1440).toFixed(4));}s();addEventListener("resize",s);})();</script>
 <meta name="robots" content="noindex, nofollow" />
 <title>Subrata Naskar — Subro</title>
 <meta name="description" content="Subrata Naskar (Subro) — a designer who turns cloudy ideas into simple, usable, human work." />
 <meta name="theme-color" content="#0f2457" />
 <link rel="icon" type="image/svg+xml" href="assets/img/face-logo.svg" />
-<link rel="stylesheet" href="css/style.css?v=20261112c" />
+<link rel="stylesheet" href="css/style.css?v=20261113" />
 </head>
 <body class="is-loading">
 
@@ -21,7 +23,7 @@
 
 <!-- ========== 1. LOADER: face animation ========== -->
 <div class="loader" id="loader">
-  <video id="loaderVideo" src="assets/video/subro-face-navy.mp4" muted playsinline preload="auto"></video>
+  <video id="loaderVideo" src="assets/video/subro-face-navy.mp4?v=20261113" muted playsinline preload="auto"></video>
   <div class="grid-bg loader__grid" aria-hidden="true"></div>
   <div class="loader__bar"><span id="loaderBar"></span></div>
 </div>
@@ -255,7 +257,7 @@
 </div>
 
 <script src="js/portrait.js"></script>
-<script src="js/sprites.js?v=20261112c"></script>
-<script src="js/main.js?v=20261112c"></script>
+<script src="js/sprites.js?v=20261113"></script>
+<script src="js/main.js?v=20261113"></script>
 </body>
 </html>

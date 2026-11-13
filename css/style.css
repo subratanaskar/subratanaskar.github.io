@@ -512,3 +512,100 @@ main, .footer { max-width: var(--max); margin-inline: auto; }
   .sw__head .sw__lede { display: block; font-size: 16px; line-height: 1.45; margin-top: 12px; max-width: 520px; }
   .sw__hint { margin-top: 24px; }
 }
+
+/* =====================================================================
+   WIDE SCREENS (> 1440px): no max-width — the page grows with the screen
+   --s = viewport width / 1440 (never below 1), set by the small script in
+   <head> on load and resize. Every size below is "1440 design value × --s",
+   so at 1920px wide everything is 1.33× and fills the screen.
+   Delete this block to go back to the centred 1440 column.
+   ===================================================================== */
+:root { --s: 1; }
+main, .footer, .wrap { max-width: none; }
+
+@media (min-width: 1441px) {
+  :root { --gutter: calc(80px * var(--s)); --max: 100%; }
+
+  /* shared bits */
+  .tag { gap: calc(6px * var(--s)); padding: calc(8px * var(--s)) calc(10px * var(--s)); font-size: calc(14px * var(--s)); line-height: calc(20px * var(--s)); }
+  .tag__ic { width: calc(20px * var(--s)); height: calc(20px * var(--s)); font-size: calc(13px * var(--s)); }
+  .tag--sm { padding: calc(4px * var(--s)) calc(8px * var(--s)); font-size: calc(12px * var(--s)); }
+  .h2 { font-size: calc(64px * var(--s)); }
+  .eyebrow { font-size: calc(12px * var(--s)); margin-bottom: calc(12px * var(--s)); }
+  .dot { width: calc(16px * var(--s)); height: calc(16px * var(--s)); }
+
+  /* nav */
+  .nav { height: calc(72px * var(--s)); padding-inline: var(--gutter); gap: calc(24px * var(--s)); }
+  .nav__logo { width: calc(48px * var(--s)); height: calc(48px * var(--s)); }
+  .face-logo { height: calc(48px * var(--s)); }
+  .nav__links { gap: calc(40px * var(--s)); }
+  .nav__link { font-size: calc(14px * var(--s)); line-height: calc(20px * var(--s)); gap: calc(4px * var(--s)); }
+  .nav__right { font-size: calc(14px * var(--s)); gap: calc(24px * var(--s)); }
+
+  /* hero */
+  .hero {
+    min-height: calc(100vh - 72px * var(--s));
+    grid-template-columns: minmax(0, calc(560px * var(--s))) minmax(0, 1fr);
+    gap: calc(48px * var(--s));
+    padding-top: calc(48px * var(--s)); padding-bottom: calc(64px * var(--s));
+    padding-left: calc(240px * var(--s));
+  }
+  .hero__text { gap: calc(32px * var(--s)); }
+  .hero__hi, .hero__lede { font-size: calc(24px * var(--s)); line-height: calc(32px * var(--s)); }
+  .hero__subro span { font-size: calc(80px * var(--s)); }
+  .hero__story { font-size: calc(20px * var(--s)); line-height: calc(28px * var(--s)); max-width: calc(437px * var(--s)); margin-top: calc(8px * var(--s)); }
+  .hero__cta { gap: calc(48px * var(--s)); margin-top: calc(16px * var(--s)); }
+  .hero__art { width: min(100%, calc(388px * var(--s))); }
+
+  /* what's up (polaroid pile scales as one piece) */
+  .whatsup { padding-top: calc(80px * var(--s)); padding-bottom: calc(140px * var(--s)); gap: calc(60px * var(--s)); }
+  .whatsup__tag span { font-size: calc(20px * var(--s)); }
+  .whatsup__row { max-width: calc(1104px * var(--s)); gap: calc(240px * var(--s)); }
+  .whatsup__pile { zoom: var(--s); }
+  .whatsup__text { width: calc(370px * var(--s)); font-size: calc(20px * var(--s)); line-height: calc(28px * var(--s)); }
+  .whatsup__text p + p { margin-top: calc(28px * var(--s)); }
+
+  /* taxi strip (the canvas redraws at the new size; see taxiStrip() in main.js) */
+  .taxi canvas { height: calc(400px * var(--s)); }
+  .taxi__caption { font-size: calc(14px * var(--s)); gap: calc(6px * var(--s)) calc(22px * var(--s)); padding: calc(14px * var(--s)) calc(16px * var(--s)) calc(18px * var(--s)); }
+
+  /* worked with */
+  .worked { padding-top: calc(240px * var(--s)); padding-bottom: calc(160px * var(--s)); }
+  .worked__title { font-size: calc(24px * var(--s)); margin-bottom: calc(80px * var(--s)); }
+  .worked__logos { gap: calc(48px * var(--s)) calc(64px * var(--s)); }
+  .worked__logos img { height: calc(48px * var(--s)); }
+
+  /* selected work: side scroll (city + road tiles rescale in main.js) */
+  .sw__head { padding-top: calc(224px * var(--s)); gap: calc(24px * var(--s)); }
+  .sw__lede { max-width: calc(640px * var(--s)); margin-top: calc(24px * var(--s)); font-size: calc(20px * var(--s)); }
+  .sw__hint { margin-top: calc(40px * var(--s)); }
+  .sw__hint span { font-size: calc(16px * var(--s)); line-height: calc(24px * var(--s)); }
+  .sw__legend { font-size: calc(10px * var(--s)); gap: calc(6px * var(--s)); }
+  .lg-dot { width: calc(6px * var(--s)); height: calc(6px * var(--s)); }
+  .sw__city { bottom: calc(96px * var(--s)); height: calc(220px * var(--s)); }
+  .sw__track { bottom: calc(220px * var(--s)); gap: calc(316px * var(--s)); padding-right: max(24px, calc(50% - 380px * var(--s))); }
+  .sw__ground { height: calc(96px * var(--s)); }
+  .sw__mascot { width: calc(165px * var(--s)); height: calc(189px * var(--s)); margin-left: calc(-82px * var(--s)); bottom: calc(92px * var(--s)); }
+  .sw__progress { bottom: calc(40px * var(--s)); }
+
+  .card { width: calc(760px * var(--s)); gap: calc(40px * var(--s)); padding: calc(40px * var(--s)); }
+  .card__content { width: calc(320px * var(--s)); height: calc(320px * var(--s)); }
+  .card__num { font-size: calc(24px * var(--s)); line-height: calc(32px * var(--s)); }
+  .card__year { font-size: calc(11px * var(--s)); }
+  .card__title { font-size: calc(32px * var(--s)); line-height: calc(32px * var(--s)); margin-top: calc(16px * var(--s)); }
+  .card__desc { font-size: calc(14px * var(--s)); line-height: calc(20px * var(--s)); margin-top: calc(8px * var(--s)); }
+  .card .tag { margin-top: calc(32px * var(--s)); }
+  .card__tags { gap: calc(6px * var(--s)); }
+  .card__tags span { font-size: calc(12px * var(--s)); padding: calc(6px * var(--s)) calc(8px * var(--s)); }
+  .card__media { width: calc(320px * var(--s)); height: calc(320px * var(--s)); }
+
+  /* let's talk + footer */
+  .talk { padding-top: calc(160px * var(--s)); padding-bottom: calc(140px * var(--s)); }
+  .talk__row { gap: calc(64px * var(--s)); margin-bottom: calc(120px * var(--s)); }
+  .talk__title { font-size: calc(80px * var(--s)); }
+  .talk__p { font-size: calc(20px * var(--s)); max-width: calc(540px * var(--s)); margin-top: calc(16px * var(--s)); }
+  .star { width: min(100%, calc(460px * var(--s))); }
+  .footer { padding: calc(80px * var(--s)) 0 calc(40px * var(--s)); }
+  .footer__word { font-size: calc(128px * var(--s)); }
+  .footer__cols { margin-top: calc(48px * var(--s)); gap: calc(24px * var(--s)); font-size: calc(14px * var(--s)); }
+}
