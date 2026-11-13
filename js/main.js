@@ -164,7 +164,7 @@
     {
       const base = "assets/video/subro-face" + (innerHeight > innerWidth ? "-portrait" : "") + "-navy";
       const mp4 = video.canPlayType('video/mp4; codecs="avc1.42E01E"');
-      const src = base + (mp4 ? ".mp4" : ".webm") + "?v=20261113";
+      const src = base + (mp4 ? ".mp4" : ".webm") + "?v=20261113b";
       if (!video.currentSrc.endsWith(src)) { video.src = src; video.load(); }
     }
     // the forward half plays 0.5s longer than its natural length (same pace as before)
